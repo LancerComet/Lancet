@@ -1,0 +1,54 @@
+$defaultColor = $defaultFontColor
+
+.lct-radio
+  $radioSize = 16px
+  $radioInnerSize = 6px
+  margin-right: 24px
+  cursor: pointer
+
+  &:last-of-type
+    margin-right: 0
+
+  .radio-style
+    display: inline-block
+    width: $radioSize
+    height: $radioSize
+    position: relative
+    margin-right: 8px
+    border-radius: 50%
+    border: 1px solid rgba(0, 0, 0, .2)
+
+    .radio-hinter
+      width: $radioInnerSize
+      height: @width
+      position: absolute
+      top: (($radioSize - @height) / 2)
+      left: (($radioSize - @width) / 2)
+      border-radius: 50%
+      transition: all $easing .2s
+      transform: scale(0)
+
+    &.selected
+      .radio-hinter
+        background-color: $defaultColor
+        transform: scale(1)
+
+    .ripple-slot
+      width: 200%
+      height: @width
+      left: 50%
+      top: 50%
+      position: absolute
+      border-radius: 50%
+      overflow: hidden
+      transform: translate(-50%, -50%)
+
+  .radio-input
+    display: none
+
+  .label-text
+    font-size: 14px
+
+  .radio-style
+  .label-text
+    vertical-align: middle

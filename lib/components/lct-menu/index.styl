@@ -1,0 +1,30 @@
+@keyframes lct-menu-entry-animation
+  from
+    opacity: 0
+    transform: translate(0, -5px)
+  to
+    opacity: 1
+    transform: translate(0, 0)
+
+@keyframes lct-menu-close-animation
+  from
+    opacity: 1
+    transform: translate(0, 0)
+  to
+    opacity: 0
+    transform: translate(0, -5px)
+
+.lct-menu
+  position: relative
+
+  .menu-slot
+    position: absolute
+    top: 100%
+    left: 0
+    z-index: 1
+
+  .lct-menu-entry-animation
+    animation: lct-menu-entry-animation $easing .2s
+
+  .lct-menu-close-animation
+    animation: lct-menu-close-animation $easing .4s

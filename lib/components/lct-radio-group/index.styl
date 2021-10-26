@@ -1,0 +1,30 @@
+@keyframes lct-radio-error-text-entry-animation
+  from
+    opacity: 0
+    transform: translate(0, -10px)
+  to
+    opacity: 1
+    transform: translate(0, 0)
+
+@keyframes lct-radio-error-text-leave-animation
+  from
+    opacity: 1
+  to
+    opacity: 0
+
+.lct-radio-group
+  position: relative
+
+  &.disabled
+    .input-body
+      opacity: 0.4
+      cursor: default
+
+  .error-text
+    font-size: 14px
+
+    &.entry-animation
+      animation: lct-radio-error-text-entry-animation $easing .4s
+
+    &.leave-animation
+      animation: lct-radio-error-text-leave-animation $easing .2s

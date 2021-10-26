@@ -1,0 +1,23 @@
+@keyframes lct-validator-error-text-entry-animation
+  from
+    opacity: 0
+    transform: translate(0, -10px)
+  to
+    opacity: 1
+    transform: translate(0, 0)
+
+@keyframes lct-validator-error-text-leave-animation
+  from
+    opacity: 1
+  to
+    opacity: 0
+
+.lct-validator
+  .error-text
+    font-size: 14px
+
+    &.entry-animation
+      animation: lct-validator-error-text-entry-animation $easing .4s
+
+    &.leave-animation
+      animation: lct-validator-error-text-leave-animation $easing .2s

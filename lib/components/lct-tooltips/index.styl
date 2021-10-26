@@ -1,0 +1,75 @@
+.lct-tooltips
+  position relative
+  display: inline-block
+
+  .tooltips
+    text-align: center
+    color #fff
+    padding 5px
+    font-size: 14px
+    max-width: 320px
+    position: fixed
+    font-size: 14px
+    z-index: 100
+    display none
+
+    .tooltips-content
+      padding 10px
+      border-radius: 4px
+      background-color: rgba(0,0,0,0.80)
+
+  .top
+    transform: translate(-50%, -100%)
+
+  .top::after
+    transform: translate(-50%)
+    left: 50%
+    bottom: 0
+    border-right: 5px solid transparent
+    border-left: 5px solid transparent
+    border-top: 5px solid #000
+
+  .left
+    transform: translate(-100%, -50%)
+
+  .left::after
+    transform: translateY(-50%)
+    top: 50%
+    right: 0
+    border-top: 5px solid transparent
+    border-bottom: 5px solid transparent
+    border-left: 5px solid #000
+
+  .right
+    transform: translateY(-50%)
+
+  .right::after
+    transform: translateY(-50%)
+    top: 50%
+    left: 0
+    border-top: 5px solid transparent
+    border-bottom: 5px solid transparent
+    border-right: 5px solid #000
+
+  .bottom
+    transform: translate(-50%)
+
+  .bottom::after
+    transform: translate(-50%)
+    left: 50%
+    top: 0
+    border-right: 5px solid transparent
+    border-left: 5px solid transparent
+    border-bottom: 5px solid #000
+
+  .tooltips::after
+    display: none
+    position: absolute
+    content: ''
+    z-index: 100
+    display: block
+
+.lct-tooltips:hover
+  .tooltips
+    display block
+

@@ -1,0 +1,79 @@
+.lct-datepicker
+  .calendar-main
+    display: flex
+    position: relative
+    transition: all $easing .4s
+
+    &.month-select-open
+      transform: translate(-100%, 0)
+
+  .calendar-body
+    position: relative
+
+    .calendar-header
+      display: flex
+      padding: 25px 20px
+      align-items: flex-end
+      line-height: 1
+      color: #fff
+
+      .year-text
+      .date-text
+      .time-text
+        font-size: 14px
+
+      .year-text
+        opacity: .6
+
+      .date-text
+        margin-top: 5px
+        font-size: 32px
+
+      .time-text
+        margin-left: 5px
+
+    .calendar-controls
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: 10px
+
+      > button
+        margin: 0
+
+      .current-date
+        font-size: 15px
+
+    .calendar-content
+      display: flex
+
+      .date-table
+        margin: 15px 10px
+        text-align: center
+        font-size: 14px
+
+        .list-header
+          color: #aaa
+
+        .list-blocks
+          .date-block
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 30px
+            height: 30px
+            border-bottom: 2px solid transparent
+            font-size: inherit
+
+            &.selected
+              color: #fff !important
+
+  .right-part
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 25px
+
+    .time-input-container
+      box-sizing: border-box
+      white-space: nowrap

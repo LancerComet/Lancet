@@ -1,0 +1,33 @@
+.lct-tabs
+  display: flex
+  flex-wrap: wrap
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05)
+
+  .lct-tab
+    padding: 15px 20px 13px 20px
+    cursor pointer
+    user-select: none
+
+  .active
+    border-width: 0
+    border-bottom-width: 3px
+    border-style: solid
+    border-color: black
+
+  .deactivated
+    color #6C6F7E
+
+.lct-tab-panels
+  white-space: nowrap
+  overflow: hidden
+
+  .hide-bar
+    display: none
+
+  .lct-tab-panel
+    padding: 20px 40px
+    width: calc(100% - 80px)
+    display: inline-block
+    white-space: initial
+    vertical-align: top
+

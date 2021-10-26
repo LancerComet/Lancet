@@ -1,0 +1,28 @@
+.lct-progress-circular
+  animation: lct-progress-circular-rotate 1.4s linear infinite
+
+  .circular-overlay
+    stroke: currentColor
+    z-index: 2
+    animation: lct-progress-circular-dash 1.4s ease-in-out infinite
+    transition: all .6s ease-in-out
+    stroke-linecap: round
+    stroke-dasharray: 80,200
+    stroke-dashoffset: 0
+
+@keyframes lct-progress-circular-rotate
+  to
+    transform: rotate(1turn)
+
+@keyframes lct-progress-circular-dash
+  0%
+    stroke-dasharray: 1, 200
+    stroke-dashoffset: 0
+
+  50%
+    stroke-dasharray: 100, 200
+    stroke-dashoffset: -15px
+
+  to
+    stroke-dasharray: 100, 200
+    stroke-dashoffset: -125px

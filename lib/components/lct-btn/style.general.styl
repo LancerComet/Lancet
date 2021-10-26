@@ -1,0 +1,44 @@
+.lct-button
+  min-width: 80px
+  height: 40px
+  padding: 0 10px
+  margin: 10px 5px
+  border: none
+  font-size: 14px
+  background-color: #dadada
+  border-radius: 2px
+  cursor: pointer
+  transition: all $easing .2s
+
+  &:active
+    transition: none !important
+
+  &:not(.transparent)
+    color: #fff
+
+  &.transparent
+    background-color: transparent
+    color: $defaultFontColor
+
+    &:hover
+      background-color: transparent
+      color: $defaultFontColor
+
+    &:active
+      background-color: transparent
+      color: $defaultFontColor
+
+  &[disabled]
+    opacity: .4
+    cursor: default
+
+  &.outlined
+    background-color: transparent
+    color: $defaultFontColor
+    border: 1px solid @color
+
+  .content-container
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    vertical-align: middle

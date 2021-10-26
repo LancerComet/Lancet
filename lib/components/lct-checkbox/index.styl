@@ -1,0 +1,84 @@
+$defaultColor = $defaultFontColor
+$checkboxSize = 18px
+
+@keyframes lct-checkbox-enter-animation
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes lct-checkbox-leave-animation
+  from
+    opacity: 1
+  to
+    opacity: 0
+
+@keyframes lct-checkbox-check-enter-animation
+  from
+    transform: scale(.5) rotate(-90deg)
+  to
+    transform: scale(1) rotate(0)
+
+.lct-checkbox
+  margin-right: 24px
+  cursor: pointer
+  user-select: none
+
+  &:last-of-type
+    margin-right: 0
+
+  .ripple-slot
+    width: 200%
+    height: @width
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    border-radius: 50%
+
+  .checkbox-style
+    display: inline-block
+    width: $checkboxSize
+    height: $checkboxSize
+    position: relative
+    border-radius: 3px
+    border: 1px solid rgba(0, 0, 0, .1)
+
+    .checkbox-hinter
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+
+      .check-icon
+        height: 100%
+        background-image: url('./checked.svg')
+        background-size: 80% 80%
+        background-repeat: no-repeat
+        background-position: center
+        animation: lct-checkbox-check-enter-animation $easing .3s
+
+      &.enter-animation
+        animation: lct-checkbox-enter-animation $easing .4s
+
+      &.leave-animation
+        animation: lct-checkbox-leave-animation $easing .2s
+
+    &.selected
+      border-color: $defaultColor
+
+      .checkbox-hinter
+        background-color: $defaultColor
+
+  .checkbox-input
+    display: none
+
+  .label-text
+    margin-left: 8px
+    font-size: 14px
+
+  .checkbox-style
+  .label-text
+    vertical-align: middle
+

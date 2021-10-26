@@ -1,0 +1,30 @@
+.lct-global-toast-container
+  position: fixed
+  top: 20px
+  left: 50%
+  transform: translateX(-50%)
+  z-index: 1000
+
+  .lct-global-toast-enter-active
+    animation: lct-global-toast-enter $easing .4s
+
+  .lct-global-toast-leave-active
+    animation: lct-global-toast-leave $easing .4s
+
+@keyframes lct-global-toast-enter
+  from
+    transform: translate(0, 100%)
+    opacity: 0
+
+  to
+    transform: translate(0, 0)
+    opacity: 1
+
+@keyframes lct-global-toast-leave
+  from
+    transform: translate(0, 0)
+    opacity: 1
+
+  to
+    transform: translate(0, -100%)
+    opacity: 0

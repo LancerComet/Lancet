@@ -1,0 +1,33 @@
+@keyframes lct-textfield-error-text-entry-animation
+  from
+    opacity: 0
+    transform: translate(0, -10px)
+  to
+    opacity: 1
+    transform: translate(0, 0)
+
+@keyframes lct-textfield-error-text-leave-animation
+  from
+    opacity: 1
+  to
+    opacity: 0
+
+.lct-textfield
+  .textfield-input
+    height: 40px
+    position: relative
+    padding: 0 14px
+    border: 1px solid rgba(0, 0, 0, 0.1)
+    border-radius: 4px
+    outline: none
+    box-sizing: border-box
+
+  .label-text
+  .error-text
+    font-size: 14px
+
+    &.entry-animation
+      animation: lct-textfield-error-text-entry-animation $easing .4s
+
+    &.leave-animation
+      animation: lct-textfield-error-text-leave-animation $easing .2s
