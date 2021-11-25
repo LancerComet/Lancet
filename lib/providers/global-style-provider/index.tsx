@@ -24,10 +24,12 @@ const GlobalStyleProvider = defineComponent({
     const updateGlobalStyle = () => {
       let cssText = ''
       colorSchemes.forEach(scheme => {
-        const color = colorValue.value[scheme] as string
+        const backgroundColor = colorValue.value.color[scheme] as string
+        const textColor = colorValue.value.text[scheme] as string
         cssText += (styleTemplate as string)
           .replace(/THEME_SCHEME/g, scheme)
-          .replace(/COLOR_VALUE/g, color)
+          .replace(/BACKGROUND_COLOR/g, backgroundColor)
+          .replace(/TEXT_COLOR/g, textColor)
           .replace(/APP_ID/g, AppId)
       })
 

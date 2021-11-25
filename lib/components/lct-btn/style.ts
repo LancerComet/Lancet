@@ -15,11 +15,14 @@ function updateDynamicStyle () {
 
   let cssText = ''
   colorSchemes.forEach(scheme => {
-    const color = colorValue[scheme] as string
+    const backgroundColor = colorValue.color[scheme] as string
+    const textColor = colorValue.text[scheme] as string
+
     cssText += (dynamicCssTemplate as string)
       .replace(/COLOR_SCHEME/g, scheme)
-      .replace(/HOVER_COLOR/g, lighten(color, 0.1))
-      .replace(/ACTIVE_COLOR/g, darken(color, 0.1))
+      .replace(/HOVER_TEXT_COLOR/g, lighten(backgroundColor, 0.1))
+      .replace(/HOVER_BACKGROUND_COLOR/g, darken(textColor, 0.1))
+      .replace(/ACTIVE_TEXT_COLOR/g, darken(textColor, 0.1))
       .replace(/APP_ID/g, AppId)
   })
 

@@ -8,10 +8,8 @@ import { updateDynamicStyle } from './style'
 
 import './style.general.styl'
 
-const ComponentName = 'LctBtn'
-
 const LctBtn = defineComponent({
-  name: ComponentName,
+  name: 'LctBtn',
 
   directives: {
     ripple: Ripple
@@ -103,15 +101,13 @@ const LctBtn = defineComponent({
       const result: string[] = ['lct-button']
 
       if (props.transparent) {
-        result.push('transparent')
+        result.push(`transparent ${colorScheme}-text`)
+      } else if (outlined.value) {
+        result.push('outlined', `${colorScheme}-border`, `${colorScheme}-text`)
       } else {
-        result.push(`color-${colorScheme}`)
-        if (outlined.value) {
-          result.push('outlined', `${colorScheme}-border`, `${colorScheme}-text`)
-        } else {
-          result.push(`${colorScheme}-background`)
-        }
+        result.push(`${colorScheme}-background ${colorScheme}-text`)
       }
+
       return result
     })
 
@@ -136,6 +132,5 @@ const LctBtn = defineComponent({
 })
 
 export {
-  LctBtn,
-  ComponentName
+  LctBtn
 }
