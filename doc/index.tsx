@@ -32,9 +32,9 @@ const TestPage = defineComponent({
           </h4>
 
           <DynamicThemeShowcase />
-          <TypographyShowcase />
           <ButtonShowcase />
           <SwitcherShowcase />
+          <TypographyShowcase />
           <TabsShowcase />
           <FormShowcase />
           <TableShowcase />
