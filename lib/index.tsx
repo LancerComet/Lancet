@@ -5,6 +5,8 @@
  * @licence
  */
 
+import './style/typography.styl'
+
 import { Plugin } from 'vue'
 import { Ripple } from './directives/ripple'
 
