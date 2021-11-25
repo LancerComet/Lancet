@@ -9,8 +9,7 @@ import { OutsideSlotProvider } from '../../providers/outside-slot-provider'
 import { LctToastProvider } from '../../providers/toast-provider'
 
 /**
- * LctApp 是项目的根组件.
- * 用于为框架提供特殊功能.
+ * LctApp must be placed as root component in order to use Lancet.
  */
 const LctApp = defineComponent({
   name: 'LctApp',

@@ -2,9 +2,10 @@
   display: flex
   flex-direction: column
   background-color: #fff
+  border-radius: 12px
 
   &.elevated
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05)
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1)
 
   &.with-margin
     margin: $inputMargin
@@ -13,13 +14,13 @@
     display: flex
     align-items: center
     justify-content: space-between
-    padding: 24px 24px 18px 24px
+    padding: 30px
+    padding-bottom: 15px
     font-size: 16px
-    color: $defaultFontColor
-    border-bottom: 1px solid rgba(0, 0, 0, .05)
 
   .card-content
     height: 100%
     flex-grow: 1
-    padding: 24px
+    padding: 30px
+    padding-top: 0
     box-sizing: border-box

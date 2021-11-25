@@ -29,7 +29,7 @@ function createDefaultColorConfig (): LancetColorConfig {
       success: '#d8f3d8'
     },
     text: {
-      primary: '#70afd1',
+      primary: '#62889d',
       warning: '#eb9253',
       error: '#e33422',
       success: '#75b97d'

@@ -6,17 +6,20 @@ import { injectCssStyle, updateCssStyle } from '../../utils/style'
 let styleElementId = ''
 
 function updateDynamicStyle () {
-  const appConfig = useAppConfig()
+  const { appConfig } = useAppConfig()
   const colorSchemes = Object.values(LancetColorScheme)
   const colorValue = appConfig.value.colors as LancetColorConfig
 
   let cssText = ''
   colorSchemes.forEach(scheme => {
-    const color = colorValue[scheme] as string
+    const color = colorValue.color[scheme] as string
+    const text = colorValue.text[scheme] as string
+
     cssText += `
       #${AppId} .lct-toast.color-${scheme} {
         background-color: ${color};
         border-color: ${color};
+        color: ${text};
       }
     `
   })

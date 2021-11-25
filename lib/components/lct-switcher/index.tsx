@@ -1,11 +1,11 @@
 import { computed, defineComponent, PropType } from 'vue'
 
 import { LancetColorScheme } from '../../config/color'
+import { useAppConfig } from '../../providers/app-config-provider'
 import { isString } from '../../utils/type'
 import { LctProgressCircular } from '../lct-progress-circular'
 
 import './index.styl'
-import { useAppConfig } from '../../providers/app-config-provider'
 
 const LctSwitcher = defineComponent({
   props: {
@@ -42,7 +42,7 @@ const LctSwitcher = defineComponent({
   emits: ['update:modelValue'],
 
   setup (props, { emit }) {
-    const appConfig = useAppConfig()
+    const { appConfig } = useAppConfig()
 
     const isActivated = computed(() => {
       return props.modelValue === props.trueValue

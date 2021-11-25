@@ -9,7 +9,7 @@ import dynamicCssTemplate from './style.dynamic.styl'
 let styleElementId = ''
 
 function updateDynamicStyle () {
-  const appConfig = useAppConfig()
+  const { appConfig } = useAppConfig()
   const colorSchemes = Object.values(LancetColorScheme)
   const colorValue = appConfig.value.colors as LancetColorConfig
 

@@ -69,6 +69,11 @@ const LctBtn = defineComponent({
     title: {
       type: String as PropType<string>,
       default: ''
+    },
+
+    elevated: {
+      type: Boolean as PropType<boolean>,
+      default: false
     }
   },
 
@@ -108,6 +113,7 @@ const LctBtn = defineComponent({
         result.push(`${colorScheme}-background ${colorScheme}-text`)
       }
 
+      props.elevated && result.push('elevated')
       return result
     })
 
