@@ -5,14 +5,11 @@
  * @licence
  */
 
-import './style/typography.styl'
-
 import { Plugin } from 'vue'
 import { Ripple } from './directives/ripple'
 
 export * from './components'
 
-export { createDefaultConfig } from './config/app-config'
 export type { LancetAppConfig } from './config/app-config'
 
 export { LancetColorScheme, createDefaultColorConfig } from './config/color'

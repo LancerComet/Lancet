@@ -1,35 +1,28 @@
 import { computed, defineComponent, inject, PropType, provide, Ref } from 'vue'
-import { createDefaultConfig, LancetAppConfig } from '../../config/app-config'
-import { createDefaultColorConfig } from '../../config/color'
-import { createDefaultTheme } from '../../config/theme'
+import { createDefaultAppConfig, LancetAppConfig } from '../../config/app-config'
 import { randomString } from '../../utils/random'
 
 const AppConfigInjectKey = `appConfig_${randomString()}`
+const DEFAULT_APP_CONFIG = createDefaultAppConfig()
 
 const AppConfigProvider = defineComponent({
   name: 'AppConfigProvider',
 
   props: {
     config: {
-      type: Object as PropType<Partial<LancetAppConfig>>,
-      default: createDefaultConfig()
+      type: Object as PropType<Partial<LancetAppConfig>>
     }
   },
 
   setup (props, { slots }) {
-    const config = computed<LancetAppConfig>(() => {
-      const defaultTheme = createDefaultTheme()
-      const defaultColorConfig = createDefaultColorConfig()
+    const appConfig = computed<LancetAppConfig>(() => {
       return {
-        theme: props.config?.theme ?? defaultTheme,
-        colors: {
-          ...defaultColorConfig,
-          ...props.config?.colors
-        }
+        ...DEFAULT_APP_CONFIG,
+        ...props.config
       }
     })
 
-    provide(AppConfigInjectKey, config)
+    provide(AppConfigInjectKey, appConfig)
 
     return () => (
       <>{ slots.default?.() }</>
@@ -45,7 +38,10 @@ const AppConfigProvider = defineComponent({
  */
 const useAppConfig = (): Ref<LancetAppConfig> => {
   return inject<Ref<LancetAppConfig>>(
-    AppConfigInjectKey, computed(() => createDefaultConfig())
+    AppConfigInjectKey, computed(() => {
+      console.warn('[Lancet] You have to call useAppConfig under <LctApp />.')
+      return DEFAULT_APP_CONFIG
+    })
   )
 }
 

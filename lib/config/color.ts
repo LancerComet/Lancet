@@ -29,10 +29,10 @@ function createDefaultColorConfig (): LancetColorConfig {
       success: '#d8f3d8'
     },
     text: {
-      primary: '#3f97c7',
+      primary: '#70afd1',
       warning: '#eb9253',
       error: '#e33422',
-      success: '#25932c'
+      success: '#75b97d'
     }
   }
 }

@@ -24,13 +24,16 @@ const TestPage = defineComponent({
       <LctApp>
         <div class={style.testPage}>
           <div>
-            <h1>Lancet</h1>
-            <p>A little tiny Vue 3 UI component library.</p>
+            <h3>
+              <span>Lancet</span>
+              <br/>
+              <small>A little tiny, Material 3 style Vue 3 UI component library.</small>
+            </h3>
           </div>
 
-          <TypographyShowcase />
           <ButtonShowcase />
           <SwitcherShowcase />
+          <TypographyShowcase />
           <TabsShowcase />
           <FormShowcase />
           <TableShowcase />

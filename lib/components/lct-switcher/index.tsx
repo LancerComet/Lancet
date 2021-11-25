@@ -5,6 +5,7 @@ import { isString } from '../../utils/type'
 import { LctProgressCircular } from '../lct-progress-circular'
 
 import './index.styl'
+import { useAppConfig } from '../../providers/app-config-provider'
 
 const LctSwitcher = defineComponent({
   props: {
@@ -41,8 +42,22 @@ const LctSwitcher = defineComponent({
   emits: ['update:modelValue'],
 
   setup (props, { emit }) {
+    const appConfig = useAppConfig()
+
     const isActivated = computed(() => {
       return props.modelValue === props.trueValue
+    })
+
+    const backgroundClassName = computed(() => {
+      return isString(props.color) ? `${props.color}-background` : undefined
+    })
+
+    const handleStyle = computed(() => {
+      return {
+        backgroundColor: isActivated.value
+          ? appConfig.value.colors.text[props.color]
+          : undefined
+      }
     })
 
     const toggleSelect = () => {
@@ -59,14 +74,25 @@ const LctSwitcher = defineComponent({
       <div
         class={[
           'lct-switcher',
-          isActivated.value ? (isString(props.color) ? `${props.color}-background` : null) : null,
+          isActivated.value ? backgroundClassName.value : null,
           props.disabled ? 'disabled' : null
         ]}
         onClick={toggleSelect}
       >
-        <div class={['switch-handler', isActivated.value ? 'activated' : null]}>{
+        <div
+          class={['switch-handle', isActivated.value ? 'activated' : null]}
+          style={handleStyle.value}
+        >{
           props.loading
-            ? <LctProgressCircular class='loading-indicator' size={15} color={props.color}/>
+            ? <LctProgressCircular
+                class='loading-indicator'
+                style={{
+                  color: isActivated.value
+                    ? '#ffffff'
+                    : appConfig.value.colors.text[props.color]
+                }}
+                size={18}
+              />
             : null
         }</div>
       </div>

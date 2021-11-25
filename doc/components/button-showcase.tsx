@@ -4,7 +4,7 @@ import { LctBtn, LctCard, LancetColorScheme } from '../../lib'
 const ButtonShowcase = defineComponent({
   setup () {
     return () => (
-      <LctCard title='按钮' elevated withMargin>
+      <LctCard title='Button' elevated withMargin>
         <div>
           <h6>Default</h6>
           <LctBtn>Default</LctBtn>

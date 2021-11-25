@@ -12,12 +12,12 @@ const GlobalStyleProvider = defineComponent({
   name: 'GlobalStyleProvider',
 
   setup (props, { slots }) {
-    const config = useAppConfig()
+    const appConfig = useAppConfig()
     const colorSchemes = Object.values(LancetColorScheme)
     const colorValue = computed<LancetColorConfig>(() => {
       return {
         ...createDefaultColorConfig(),
-        ...config.value.colors
+        ...appConfig.value.colors
       } as LancetColorConfig
     })
 
