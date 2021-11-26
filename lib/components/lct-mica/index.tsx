@@ -3,14 +3,15 @@ import { useAppConfig } from '../../providers/app-config-provider'
 import { setBrightness } from '../../utils/color'
 
 import './index.styl'
+import { LctCard } from '../lct-card/lct-card'
 
 const LctMica = defineComponent({
   name: 'LctMica',
 
   props: {
-    brightness: {
+    opacity: {
       type: Number as PropType<number>,
-      default: 0
+      default: 1
     }
   },
 
@@ -19,10 +20,10 @@ const LctMica = defineComponent({
   setup (props, { emit, slots }) {
     const { appConfig } = useAppConfig()
     const style = computed(() => {
-      const brightness = 1 + (props.brightness / 10)
-      const color = setBrightness(appConfig.value.colors.color.primary, brightness)
+      const color = appConfig.value.colors.color.primary
       return {
-        backgroundColor: color
+        backgroundColor: color,
+        opacity: props.opacity
       }
     })
 
@@ -31,10 +32,13 @@ const LctMica = defineComponent({
     }
 
     return () => (
-      <div
-        class='lct-mica' style={style.value}
-        onClick={onClick}
-      >{slots.default?.()}</div>
+      <LctCard class='lct-mica' radius={0}>
+        <div
+          class='lct-mica-color'
+          style={style.value}
+          onClick={onClick}
+        >{slots.default?.()}</div>
+      </LctCard>
     )
   }
 })

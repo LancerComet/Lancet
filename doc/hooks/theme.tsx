@@ -1,16 +1,18 @@
-import { useAppConfig } from '../../lib'
+import { createDefaultColorConfig, useAppConfig } from '../../lib'
 
 const useCustomTheme = () => {
   const { appConfig, setAppConfig } = useAppConfig()
+  const defaultColor = createDefaultColorConfig()
   const colorSchemeList = [
     {
-      color: appConfig.value.colors.color.primary,
-      text: appConfig.value.colors.text.primary,
-      label: '🌊'
+      color: defaultColor.color.primary,
+      text: defaultColor.text.primary,
+      label: '🌊 Ocean'
     },
-    { color: '#fbdace', text: '#795548', label: '🌸' },
-    { color: '#b2ddc3', text: '#879d9b', label: '🌳' },
-    { color: '#ffeacb', text: '#ff9800', label: '🍊' }
+    { color: '#fbdace', text: '#9e5750', label: '🌸 Sakura' },
+    { color: '#b2ddc3', text: '#41716c', label: '🌳 Forest' },
+    { color: '#ffeacb', text: '#ef9e5f', label: '🎃 Halloween' },
+    { color: '#d0c8d7', text: '#5a5168', label: '🍆 Eggplant' }
   ]
 
   const setAppTheme = (color: string, text: string) => {

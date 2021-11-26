@@ -115,32 +115,16 @@ const LctDialogProvider = defineComponent({
         {slots.default?.()}
         <TransitionGroup enterActiveClass={style.lctDialogProviderEnter} leaveActiveClass={style.lctDialogProviderLeave}>{
           Object.keys(dialogIds.value).map(id => {
-            const {
-              component, title, content,
-              confirmBtnText, cancelBtnText,
-              onConfirm, onCancel, onMounted,
-              hideCancelBtn, hideCloseBtn, hideConfirmBtn,
-              width
-            } = dialogIds.value[id]
+            const param = dialogIds.value[id]
             return (
               <LctDialog
                 class={id}
                 key={id}
                 modelValue={true}
                 v-slots={{
-                  default: component
+                  default: param.component
                 }}
-                title={title}
-                content={content}
-                confirmBtnText={confirmBtnText}
-                cancelBtnText={cancelBtnText}
-                onConfirm={onConfirm}
-                onCancel={onCancel}
-                onMounted={onMounted}
-                hideConfirmBtn={hideConfirmBtn}
-                hideCancelBtn={hideCancelBtn}
-                hideCloseBtn={hideCloseBtn}
-                width={width}
+                {...param}
                 onUpdate:modelValue={() => destroyDialog(id)}
               />
             )

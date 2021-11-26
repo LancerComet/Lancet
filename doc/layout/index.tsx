@@ -1,7 +1,9 @@
 import { defineComponent } from 'vue'
-import { LctBtn, LctCard, LctCardContent, LctNavView } from '../../lib'
+import { RouterView } from 'vue-router'
 
+import { LctCard, LctCardContent, LctNavView } from '../../lib'
 import { ActionBar } from '../components/action-bar'
+import { AppDrawer } from '../components/app-drawer'
 import { ButtonShowcase } from '../components/button-showcase'
 import { DialogShowcase } from '../components/dialog-showcase'
 import { DynamicThemeShowcase } from '../components/dynamic-theme.showcase'
@@ -42,17 +44,12 @@ const AppLayout = defineComponent({
       </LctCard>
     )
 
-    const AppDrawer = () => (
-      <div>
-      </div>
-    )
-
     return () => (
       <LctNavView
         class={style.appLayout}
         v-slots={{
-          frame: AppContent,
-          drawer: AppDrawer,
+          frame: () => <RouterView />,
+          drawer: () => <AppDrawer />,
           actionBar: () => <ActionBar />
         }}
       />

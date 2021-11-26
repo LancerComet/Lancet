@@ -1,14 +1,15 @@
 import { defineComponent } from 'vue'
 
-import { LctBtn, LctCard, useDialog } from '../../lib'
+import { LctBtn, LctCard, LctCardContent, LctCardTitle, useDialog } from '../../lib'
 
 const DialogShowcase = defineComponent({
   setup () {
     const { createDialog } = useDialog()
     const createNormalDialog = () => createDialog({
-      title: '普通弹窗',
-      content: '这是一个普通弹窗.',
-      hideCancelBtn: true
+      title: 'Basic dialog title',
+      content: 'A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.',
+      hideCancelBtn: true,
+      width: 320
     })
 
     const createComponentDialog = () => createDialog({
@@ -43,10 +44,13 @@ const DialogShowcase = defineComponent({
     })
 
     return () => (
-      <LctCard title='弹窗' withMargin>
-        <LctBtn onClick={createNormalDialog}>普通弹窗</LctBtn>
-        <LctBtn onClick={createComponentDialog}>组件弹窗</LctBtn>
-        <LctBtn onClick={createSelfDestroyDialog}>自毁弹窗</LctBtn>
+      <LctCard withMargin elevated>
+        <LctCardTitle>Dialogs</LctCardTitle>
+        <LctCardContent>
+          <LctBtn onClick={createNormalDialog}>普通弹窗</LctBtn>
+          <LctBtn onClick={createComponentDialog}>组件弹窗</LctBtn>
+          <LctBtn onClick={createSelfDestroyDialog}>自毁弹窗</LctBtn>
+        </LctCardContent>
       </LctCard>
     )
   }

@@ -4,6 +4,7 @@ import 'material-icons/iconfont/material-icons.css'
 
 import { Lancet, LctApp } from '../lib'
 import { AppLayout } from './layout'
+import { router } from './plugins/router'
 
 const Layout = defineComponent({
   name: 'TestPage',
@@ -18,4 +19,5 @@ const Layout = defineComponent({
 
 const app = createApp(Layout)
 app.use(Lancet)
+app.use(router)
 app.mount('#app')

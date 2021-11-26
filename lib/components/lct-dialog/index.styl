@@ -20,11 +20,10 @@
   .dialog-body
     display: flex
     flex-direction: column
+    max-width: 90vw
     max-height: 90vh
     position: relative
     padding: 30px
-    background-color: #fff
-    border-radius: 10px
     animation: lct-dialog-body-enter $easing .4s
     box-sizing: border-box
 
@@ -43,20 +42,23 @@
         transition: none
 
     .dialog-title
-      margin-bottom: 10px
-      font-size: 16px
+      margin: 10px 0
 
     .dialog-content
       margin: 10px 0
       overflow: auto
+      font-size: 14px
 
     .btn-container
       margin-top: 10px
-      text-align: center
+      text-align: right
 
       .confirm-btn
       .cancel-btn
-        margin: 0 10px
+        margin: 0
+
+      .cancel-btn
+        margin-right: 10px
 
 @keyframes lct-dialog-body-enter
   from
