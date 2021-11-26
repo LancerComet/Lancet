@@ -62,7 +62,7 @@ const FormShowcase = defineComponent({
     }
 
     return () => (
-      <LctCard title='表单' elevated withMargin>
+      <LctCard title='表单' withMargin>
         <LctForm v-model={isDataValid.value} onSubmit={onSubmit} ref={formRef}>
           <LctTextfield
             v-model={userInput.value.username}

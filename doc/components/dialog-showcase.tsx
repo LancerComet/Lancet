@@ -43,7 +43,7 @@ const DialogShowcase = defineComponent({
     })
 
     return () => (
-      <LctCard title='弹窗' elevated withMargin>
+      <LctCard title='弹窗' withMargin>
         <LctBtn onClick={createNormalDialog}>普通弹窗</LctBtn>
         <LctBtn onClick={createComponentDialog}>组件弹窗</LctBtn>
         <LctBtn onClick={createSelfDestroyDialog}>自毁弹窗</LctBtn>

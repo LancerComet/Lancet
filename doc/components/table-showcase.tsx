@@ -48,7 +48,7 @@ const TableShowcase = defineComponent({
     }
 
     return () => (
-      <LctCard title='表格' elevated withMargin>
+      <LctCard title='表格' withMargin>
         <LctTable items={items} headers={headers} style={'margin:20px 0'} v-slots={slots} />
       </LctCard>
     )

@@ -9,6 +9,8 @@ import { LctForm } from './lct-form'
 import { LctIcon } from './lct-icon'
 import { LctInput } from './lct-input'
 import { LctMenu } from './lct-menu'
+import { LctMica } from './lct-mica'
+import { LctNavView } from './lct-nav-view'
 import { LctPagination } from './lct-pagination'
 import { LctProgressCircular } from './lct-progress-circular'
 import { LctProgressLinear } from './lct-progress-linear'
@@ -45,6 +47,8 @@ export {
   LctIcon,
   LctInput,
   LctMenu,
+  LctMica,
+  LctNavView,
   LctPagination,
   LctProgressCircular,
   LctProgressLinear,

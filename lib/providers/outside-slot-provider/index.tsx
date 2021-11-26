@@ -11,7 +11,7 @@ const OutsideSlotProvider = defineComponent({
     document.body.appendChild(element)
     provide<string>(INJECT_KEY, id)
     return () => (
-      <div>{ slots.default?.() }</div>
+      <>{ slots.default?.() }</>
     )
   }
 })

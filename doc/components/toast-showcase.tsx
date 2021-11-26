@@ -7,7 +7,7 @@ const ToastShowcase = defineComponent({
     const { createToast } = useToast()
 
     return () => (
-      <LctCard title='Toast' elevated withMargin>
+      <LctCard title='Toast' withMargin>
         <LctBtn onClick={() => createToast('Info')}>Info</LctBtn>
         <LctBtn onClick={() => createToast('Warning', 'warning')} color={LancetColorScheme.Warning}>Warning</LctBtn>
         <LctBtn onClick={() => createToast('Error', 'error')} color={LancetColorScheme.Error}>Error</LctBtn>

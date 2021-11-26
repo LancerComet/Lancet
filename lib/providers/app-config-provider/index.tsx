@@ -20,19 +20,19 @@ const AppConfigProvider = defineComponent({
   },
 
   setup (props, { slots }) {
-    const userConfig = ref({
+    const userDefinedAppConfig = ref({
       ...props.config
     })
 
     const appConfig = computed<LancetAppConfig>(() => {
       return {
         ...DEFAULT_APP_CONFIG,
-        ...userConfig.value
+        ...userDefinedAppConfig.value
       }
     })
 
     const setAppConfig: SetAppConfigFunc = (payload: Partial<LancetAppConfig>) => {
-      userConfig.value = { ...payload }
+      userDefinedAppConfig.value = { ...payload }
     }
 
     provide(AppConfigInjectKey, appConfig)

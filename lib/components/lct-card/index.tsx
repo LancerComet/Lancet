@@ -32,6 +32,11 @@ const LctCard = defineComponent({
 
     onMouseLeave: {
       type: Function as PropType<(event: Event) => void>
+    },
+
+    radius: {
+      type: Number as PropType<number>,
+      default: 12
     }
   },
 
@@ -72,6 +77,9 @@ const LctCard = defineComponent({
           props.elevated ? 'elevated' : null,
           props.withMargin ? 'with-margin' : null
         ]}
+        style={{
+          borderRadius: props.radius + 'px'
+        }}
         onMouseenter={onMouseEnter}
         onMouseleave={onMouseLeave}
       >

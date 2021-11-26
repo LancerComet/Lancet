@@ -4,7 +4,7 @@ import { LctCard } from '../../lib'
 const TypographyShowcase = defineComponent({
   setup () {
     return () => (
-      <LctCard title='Typography' elevated withMargin>
+      <LctCard title='Typography' withMargin>
         <h1>Display Large</h1>
         <h2>Display Medium</h2>
         <h3>Display Small</h3>

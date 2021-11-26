@@ -22,7 +22,7 @@ const LctApp = defineComponent({
 
   setup (props, { slots }) {
     return () => (
-      <div id={AppId}>
+      <div class={[AppId]}>
         <AppConfigProvider config={props.config}>
           <GlobalStyleProvider>
             <OutsideSlotProvider>

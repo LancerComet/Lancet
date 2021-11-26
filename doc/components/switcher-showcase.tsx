@@ -16,7 +16,7 @@ const SwitcherShowcase = defineComponent({
     const themes = ref(true)
 
     return () => (
-      <LctCard title='Switcher' elevated withMargin>
+      <LctCard title='Switcher' withMargin>
         <div>
           <span style={spanStyle}>Selected: {selected.value.toString()}</span>
           <LctSwitcher v-model={selected.value} style='vertical-align: middle'/>

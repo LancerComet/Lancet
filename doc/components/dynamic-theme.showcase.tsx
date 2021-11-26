@@ -32,7 +32,7 @@ const DynamicThemeShowcase = defineComponent({
     }
 
     return () => (
-      <LctCard title='Dynamic Theme' elevated withMargin>
+      <LctCard title='Dynamic Theme' withMargin>
         <div>
           {
             colorSchemeList.map(item => (
