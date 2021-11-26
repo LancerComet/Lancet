@@ -14,6 +14,7 @@ $drawerWidth = 300px
     top: 0
     transition: all $easing .2s
     z-index: 1
+    box-sizing: border-box
 
     &.open
       transform: translate(0, 0)
@@ -22,12 +23,14 @@ $drawerWidth = 300px
       transform: translate(-100%, 0)
 
     @media screen and (max-width: 900px)
-      &.open
-        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2)
+      padding: 15px
 
     .lct-nav-view-drawer-content
       height: 100%
       overflow: auto
+
+      @media screen and (max-width: 900px)
+        border-radius: 20px
 
   .lct-nav-view-frame
     height: 100%

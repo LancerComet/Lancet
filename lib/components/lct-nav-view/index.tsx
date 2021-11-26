@@ -5,9 +5,9 @@ import { LctBtn, LctIcon, LctMica } from '../index'
 
 const LctNavView = defineComponent({
   props: {
-    micaOpacity: {
+    micaBrightness: {
       type: Number as PropType<number>,
-      default: 0.3
+      default: 0.7
     }
   },
 
@@ -20,12 +20,14 @@ const LctNavView = defineComponent({
 
     return () => (
       <div class='lct-nav-view'>
-        <LctMica
+        <div
           class={['lct-nav-view-drawer', isDrawerOpen.value ? 'open' : 'closed']}
-          opacity={props.micaOpacity}
         >
-          <aside class='lct-nav-view-drawer-content'>{slots.drawer?.()}</aside>
-        </LctMica>
+          <LctMica
+            class='lct-nav-view-drawer-content'
+            brightness={props.micaBrightness}
+          >{slots.drawer?.()}</LctMica>
+        </div>
 
         <div class={[
           'lct-nav-view-frame',

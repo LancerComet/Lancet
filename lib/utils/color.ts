@@ -33,8 +33,22 @@ const setOpacity = (color: string, opacity: number): RgbaColorString => {
   return new Color(color).alpha(opacity).toString()
 }
 
+/**
+ * Set brightness of the color.
+ * Based on the HSL algorithm.
+ *
+ * @param color
+ * @param amount LT 0.
+ */
+const setBrightness = (color: string, amount: number): HexColorString => {
+  const colorObj = new Color(color)
+  const newValue = colorObj.lightness() * amount
+  return colorObj.lightness(newValue).hex()
+}
+
 export {
   lighten,
   darken,
-  setOpacity
+  setOpacity,
+  setBrightness
 }
