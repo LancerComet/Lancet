@@ -14,7 +14,9 @@ const LctMica = defineComponent({
     }
   },
 
-  setup (props, { slots }) {
+  emits: ['click'],
+
+  setup (props, { emit, slots }) {
     const { appConfig } = useAppConfig()
     const style = computed(() => {
       const brightness = 1 + (props.brightness / 10)
@@ -24,8 +26,15 @@ const LctMica = defineComponent({
       }
     })
 
+    const onClick = (event: MouseEvent) => {
+      emit('click', event)
+    }
+
     return () => (
-      <div class='lct-mica' style={style.value}>{slots.default?.()}</div>
+      <div
+        class='lct-mica' style={style.value}
+        onClick={onClick}
+      >{slots.default?.()}</div>
     )
   }
 })

@@ -1,6 +1,7 @@
 import { defineComponent } from 'vue'
-import { LctCard, LctNavView } from '../../lib'
+import { LctBtn, LctCard, LctCardContent, LctNavView } from '../../lib'
 
+import { ActionBar } from '../components/action-bar'
 import { ButtonShowcase } from '../components/button-showcase'
 import { DialogShowcase } from '../components/dialog-showcase'
 import { DynamicThemeShowcase } from '../components/dynamic-theme.showcase'
@@ -19,23 +20,25 @@ const AppLayout = defineComponent({
   setup () {
     const AppContent = () => (
       <LctCard>
-        <h4>
-          <span>Lancet</span>
-          <br/>
-          <small>A little tiny, Material 3 style Vue 3 UI component library.</small>
-        </h4>
+        <LctCardContent>
+          <h4>
+            <span>Lancet</span>
+            <br/>
+            <small>A little tiny, Material 3 style Vue 3 UI component library.</small>
+          </h4>
 
-        <DynamicThemeShowcase />
-        <ButtonShowcase />
-        <SwitcherShowcase />
-        <TypographyShowcase />
-        <TabsShowcase />
-        <FormShowcase />
-        <TableShowcase />
-        <DialogShowcase />
-        <ToastShowcase />
-        <ProgressShowcase />
-        <TooltipShowcase />
+          <DynamicThemeShowcase />
+          <ButtonShowcase />
+          <SwitcherShowcase />
+          <TypographyShowcase />
+          <TabsShowcase />
+          <FormShowcase />
+          <TableShowcase />
+          <DialogShowcase />
+          <ToastShowcase />
+          <ProgressShowcase />
+          <TooltipShowcase />
+        </LctCardContent>
       </LctCard>
     )
 
@@ -49,7 +52,8 @@ const AppLayout = defineComponent({
         class={style.appLayout}
         v-slots={{
           frame: AppContent,
-          drawer: AppDrawer
+          drawer: AppDrawer,
+          actionBar: () => <ActionBar />
         }}
       />
     )

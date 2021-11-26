@@ -1,29 +1,33 @@
 import { defineComponent } from 'vue'
-import { LctBtn, LctCard, LctCardContent, LctCardTitle } from '../../lib'
+import { LctBtn } from '../../lib'
 import { useCustomTheme } from '../hooks/theme'
 
-const DynamicThemeShowcase = defineComponent({
+import style from './action-bar.module.styl'
+
+const ActionBar = defineComponent({
   setup () {
     const { isCurrentColor, setAppTheme, colorSchemeList } = useCustomTheme()
 
     return () => (
-      <LctCard withMargin elevated>
-        <LctCardTitle>Dynamic Theme</LctCardTitle>
-        <LctCardContent>
+      <div class={style.actionBar}>
+        <div>Lancet</div>
+        <div>
           {
             colorSchemeList.map(item => (
               <LctBtn
+                class={style.actionButton}
                 onClick={() => setAppTheme(item.color, item.text)}
                 transparent={!isCurrentColor(item.color)}
+                circle={50}
               >{item.label}</LctBtn>
             ))
           }
-        </LctCardContent>
-      </LctCard>
+        </div>
+      </div>
     )
   }
 })
 
 export {
-  DynamicThemeShowcase
+  ActionBar
 }

@@ -1,24 +1,13 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { isEmptyString, isNumber, isUndefined } from '../../utils/type'
-import './index.styl'
-
-const ComponentName = 'LctCard'
+import { defineComponent, PropType } from 'vue'
+import './lct-card.styl'
 
 const LctCard = defineComponent({
-  name: ComponentName,
+  name: 'LctCard',
 
   props: {
-    title: {
-      type: String as PropType<string>
-    },
-
     elevated: {
       type: Boolean as PropType<boolean>,
       default: false
-    },
-
-    padding: {
-      type: [Number, String] as PropType<number | string>
     },
 
     withMargin: {
@@ -43,25 +32,6 @@ const LctCard = defineComponent({
   emits: ['mouseEnter', 'mouseLeave'],
 
   setup (props, { slots, emit }) {
-    const hasTitleOrButton = computed<boolean>(() => {
-      return !isEmptyString(props.title) || !isUndefined(slots.button?.())
-    })
-
-    const createTitleSection = () => (
-      <div class='card-title'>
-        <span>{ !isEmptyString(props.title) ? props.title : ' ' }</span>
-        { slots.button?.() }
-      </div>
-    )
-
-    const contentStyle = computed(() => {
-      return {
-        padding: isNumber(props.padding)
-          ? props.padding + 'px'
-          : props.padding
-      }
-    })
-
     const onMouseEnter = (event: Event) => {
       emit('mouseEnter', event)
     }
@@ -82,10 +52,7 @@ const LctCard = defineComponent({
         }}
         onMouseenter={onMouseEnter}
         onMouseleave={onMouseLeave}
-      >
-        { hasTitleOrButton.value ? createTitleSection() : null }
-        <div class='card-content' style={contentStyle.value}>{ slots.default?.() }</div>
-      </div>
+      >{ slots.default?.() }</div>
     )
   }
 })

@@ -74,6 +74,11 @@ const LctBtn = defineComponent({
     elevated: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+
+    circle: {
+      type: Number as PropType<number>,
+      default: 0
     }
   },
 
@@ -89,12 +94,17 @@ const LctBtn = defineComponent({
     }
 
     const style = computed(() => {
-      return {
+      const result = {
         width: cssValueFilter(width.value),
         height: cssValueFilter(height.value),
         minWidth: cssValueFilter(minWidth.value),
         maxWidth: cssValueFilter(maxWidth.value)
       }
+      if (isNumber(props.circle) && props.circle > 0) {
+        result.width = cssValueFilter(props.circle)
+        result.height = cssValueFilter(props.circle)
+      }
+      return result
     })
 
     const onClick = (event: MouseEvent) => {
@@ -114,6 +124,11 @@ const LctBtn = defineComponent({
       }
 
       props.elevated && result.push('elevated')
+
+      if (isNumber(props.circle) && props.circle > 0) {
+        result.push('circle')
+      }
+
       return result
     })
 

@@ -1,6 +1,8 @@
 import { LctApp } from './lct-app'
 import { LctBtn } from './lct-btn'
-import { LctCard } from './lct-card'
+import { LctCard } from './lct-card/lct-card'
+import { LctCardContent } from './lct-card/lct-card-content'
+import { LctCardTitle } from './lct-card/lct-card-title'
 import { LctCheckbox } from './lct-checkbox'
 import { LctChip } from './lct-chip'
 import { LctDatepicker } from './lct-datepicker'
@@ -39,6 +41,8 @@ export {
   LctApp,
   LctBtn,
   LctCard,
+  LctCardTitle,
+  LctCardContent,
   LctCheckbox,
   LctChip,
   LctDatepicker,
