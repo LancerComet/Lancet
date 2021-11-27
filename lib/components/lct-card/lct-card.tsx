@@ -31,6 +31,10 @@ const LctCard = defineComponent({
     overHidden: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+
+    role: {
+      type: String as PropType<string>
     }
   },
 
@@ -58,6 +62,7 @@ const LctCard = defineComponent({
         }}
         onMouseenter={onMouseEnter}
         onMouseleave={onMouseLeave}
+        role={props.role}
       >{ slots.default?.() }</div>
     )
   }

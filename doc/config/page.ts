@@ -1,4 +1,20 @@
-const pageConfig = [
+interface IPageConfig {
+  name: string
+  path: string
+  label: string
+  icon?: string
+  component: any
+  pages?: never
+}
+
+interface IGroupConfig {
+  name?: string
+  label: string
+  icon?: string
+  pages: IPageConfig[]
+}
+
+const pageConfig: (IPageConfig | IGroupConfig)[] = [
   {
     name: 'index',
     path: '/',
@@ -6,31 +22,37 @@ const pageConfig = [
     component: () => import('../views/index').then(item => item.IndexPage)
   },
   {
-    name: 'button-showcase',
-    path: '/button',
-    label: 'Button',
-    component: () => import('../views/showcase.button').then(item => item.ButtonShowcase)
-  },
-  {
-    name: 'dialog-showcase',
-    path: '/dialog',
-    label: 'Dialog',
-    component: () => import('../views/showcase.dialog').then(item => item.DialogShowcase)
-  },
-  {
-    name: 'dynamic-color',
-    path: '/dynamic-color',
-    label: 'Dynamic Color',
+    name: 'color-theming',
+    path: '/color-theming',
+    label: 'Color Theming',
     component: () => import('../views/showcase.dynamic-color').then(item => item.DynamicColor)
   },
   {
-    name: 'typography-showcase',
-    path: '/typography',
-    label: 'Typography',
-    component: () => import('../views/showcase.typography').then(item => item.TypographyShowcase)
+    label: 'Components',
+    pages: [
+      {
+        name: 'button-showcase',
+        path: '/button',
+        label: 'Button',
+        component: () => import('../views/showcase.button').then(item => item.ButtonShowcase)
+      },
+      {
+        name: 'dialog-showcase',
+        path: '/dialog',
+        label: 'Dialog',
+        component: () => import('../views/showcase.dialog').then(item => item.DialogShowcase)
+      },
+      {
+        name: 'typography-showcase',
+        path: '/typography',
+        label: 'Typography',
+        component: () => import('../views/showcase.typography').then(item => item.TypographyShowcase)
+      }
+    ]
   }
 ]
 
 export {
-  pageConfig
+  pageConfig,
+  IPageConfig
 }

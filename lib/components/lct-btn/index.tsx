@@ -2,12 +2,12 @@ import { computed, defineComponent, PropType, toRefs } from 'vue'
 
 import { LancetColorScheme } from '../../config/color'
 import { Ripple } from '../../directives/ripple'
+import { useAppConfig } from '../../providers/app-config-provider'
 import { isNumber } from '../../utils/type'
 import { LctProgressCircular } from '../lct-progress-circular'
 import { updateDynamicStyle } from './style'
 
 import './style.general.styl'
-import { useAppConfig } from '../../providers/app-config-provider'
 
 const LctBtn = defineComponent({
   name: 'LctBtn',
@@ -85,6 +85,11 @@ const LctBtn = defineComponent({
     filled: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+
+    textAlign: {
+      type: String as PropType<'left' | 'right' | 'center'>,
+      default: 'center'
     }
   },
 
@@ -151,12 +156,21 @@ const LctBtn = defineComponent({
     return () => (
       <button
         class={classList.value}
-        style={style.value}
+        style={style.value as any}
         type={props.type} disabled={props.disabled}
         onClick={onClick} title={props.title}
         v-ripple
       >
-        <div class='content-container'>{
+        <div
+          class='content-container'
+          style={{
+            justifyContent: props.textAlign === 'left'
+              ? 'flex-start'
+              : props.textAlign === 'right'
+                ? 'flex-end'
+                : 'center'
+          }}
+        >{
           props.loading
             ? <LctProgressCircular size='20px'/>
             : slots.default?.()

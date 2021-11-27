@@ -22,6 +22,10 @@ function isArray (target: unknown): target is unknown[] {
   return Array.isArray(target)
 }
 
+function isBoolean (target: unknown): target is boolean {
+  return typeof target === 'boolean'
+}
+
 function isEmptyString (target: unknown): target is null | '' | undefined {
   return isNull(target) || target === '' || isUndefined(target)
 }
@@ -44,6 +48,7 @@ export {
   isNull,
   isArray,
   isObject,
+  isBoolean,
   isEmptyString,
   isUnEmptyString
 }
