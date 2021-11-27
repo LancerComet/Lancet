@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType, toRefs } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { Ripple } from '../../directives/ripple'
 import { useAppConfig } from '../../providers/app-config-provider'
 import { isNumber } from '../../utils/type'
@@ -53,8 +53,8 @@ const LctBtn = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     text: {

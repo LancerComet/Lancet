@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { computed, ComputedRef, defineComponent, PropType, ref, toRef } from 'vue'
 
-import { LancetColorScheme } from '../../../config/color'
+import { LctColorScheme } from '../../../config/color'
 import { getWeekLabel, isToday } from '../../../utils/date'
 import { LctBtn } from '../../lct-btn'
 import { LctIcon } from '../../lct-icon'
@@ -22,8 +22,8 @@ const CalendarBody = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     format: {

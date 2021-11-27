@@ -9,7 +9,7 @@ const ActionBar = defineComponent({
     return () => (
       <div class={style.actionBar}>
         <LctBtn class={style.actionButton} text circle={50}>
-          <LancetLogo width={20}></LancetLogo>
+          <LancetLogo width={20}/>
         </LctBtn>
       </div>
     )

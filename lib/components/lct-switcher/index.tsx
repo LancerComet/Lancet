@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { useAppConfig } from '../../providers/app-config-provider'
 import { isString } from '../../utils/type'
 import { LctProgressCircular } from '../lct-progress-circular'
@@ -24,8 +24,8 @@ const LctSwitcher = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     trueValue: {
@@ -55,7 +55,7 @@ const LctSwitcher = defineComponent({
     const handleStyle = computed(() => {
       return {
         backgroundColor: isActivated.value
-          ? appConfig.value.colors.text[props.color]
+          ? appConfig.value.colors.tonal[props.color]
           : undefined
       }
     })
@@ -87,7 +87,7 @@ const LctSwitcher = defineComponent({
             ? <LctProgressCircular
                 class='loading-indicator'
                 style={{
-                  color: isActivated.value
+                  tonal: isActivated.value
                     ? '#ffffff'
                     : appConfig.value.colors.text[props.color]
                 }}

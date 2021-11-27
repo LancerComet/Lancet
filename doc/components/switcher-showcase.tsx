@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { LancetColorScheme, LctCard, LctSwitcher } from '../../lib'
+import { LctColorScheme, LctCard, LctSwitcher } from '../../lib'
 
 const spanStyle = {
   display: 'inline-block',
@@ -39,10 +39,10 @@ const SwitcherShowcase = defineComponent({
         </div>
 
         <div>
-          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LancetColorScheme.Primary}/>
-          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LancetColorScheme.Success}/>
-          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LancetColorScheme.Warning}/>
-          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LancetColorScheme.Error}/>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Primary}/>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Success}/>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Warning}/>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Error}/>
         </div>
       </LctCard>
     )

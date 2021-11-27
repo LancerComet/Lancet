@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType, toRefs, Transition } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { Ripple } from '../../directives/ripple'
 import { isEqual } from '../../utils/equal'
 import { isKeyEnterOrSpace } from '../../utils/inputs'
@@ -38,8 +38,8 @@ const LctCheckbox = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     }
   },
 

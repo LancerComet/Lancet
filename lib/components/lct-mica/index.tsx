@@ -20,7 +20,7 @@ const LctMica = defineComponent({
   setup (props, { emit, slots }) {
     const { appConfig } = useAppConfig()
     const style = computed(() => {
-      const color = appConfig.value.colors.color.primary
+      const color = appConfig.value.colors.tonal.primary
       return {
         backgroundColor: color,
         opacity: props.opacity

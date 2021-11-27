@@ -1,6 +1,6 @@
 import { defineComponent, PropType } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { isArray, isObject } from '../../utils/type'
 import { LctProgressLinear } from '../lct-progress-linear'
 import { LctTh } from './table/lct-th'
@@ -42,7 +42,7 @@ const LctTable = defineComponent({
         <div class='loading-indicator'>
           {
             props.loading
-              ? <LctProgressLinear indeterminate color={LancetColorScheme.Primary} fullWidth />
+              ? <LctProgressLinear indeterminate color={LctColorScheme.Primary} fullWidth />
               : null
           }
         </div>

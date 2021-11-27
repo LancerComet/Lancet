@@ -1,5 +1,5 @@
 import { computed, defineComponent } from 'vue'
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { isNumber } from '../../utils/type'
 import { LctBtn } from '../lct-btn'
 import { LctIcon } from '../lct-icon'
@@ -100,7 +100,7 @@ const LctPagination = defineComponent({
         </LctBtn>
         {updateList.value.map((item: string | number) => (
           <LctBtn class='pagination-btn'
-            color={LancetColorScheme.Primary}
+            color={LctColorScheme.Primary}
             outlined ={!(item === props.modelValue)}
             onClick={() => goTargetPage(item)}
             minWidth={0}

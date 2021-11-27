@@ -4,15 +4,18 @@ import { createDefaultColorConfig, useAppConfig } from '../../lib'
 const defaultColor = createDefaultColorConfig()
 const colorSchemeList = ref([
   {
-    color: defaultColor.color.primary,
+    tonal: defaultColor.tonal.primary,
     text: defaultColor.text.primary,
     label: '🌊 Ocean'
   },
-  { color: '#fbdace', text: '#9e5750', label: '🌸 Sakura' },
-  { color: '#b2ddc3', text: '#41716c', label: '🌳 Forest' },
-  { color: '#ffeacb', text: '#ef9e5f', label: '🎃 Halloween' },
-  { color: '#d0c8d7', text: '#5a5168', label: '🍆 Nasu' },
-  { color: '#a1e5d8', text: '#538f84', label: '🎤 Vocaloid' }
+  { tonal: '#fbdace', text: '#9e5750', label: '🌸 Sakura' },
+  { tonal: '#b2ddc3', text: '#41716c', label: '🌳 Forest' },
+  { tonal: '#ffeacb', text: '#ef9e5f', label: '🎃 Halloween' },
+  { tonal: '#d0c8d7', text: '#5a5168', label: '🍆 Qiezi' },
+  { tonal: '#a1e5d8', text: '#538f84', label: '🎤 Vocaloid' },
+  { tonal: '#b4c8dc', text: '#3C3C50', label: '🚢 Navy' },
+  { tonal: '#C8DCDC', text: '#769fab', label: '⛄ Winter' },
+  { tonal: '#C8C8B4', text: '#141428', label: '🪖 Troops' }
 ])
 
 const useCustomTheme = () => {
@@ -22,8 +25,8 @@ const useCustomTheme = () => {
     setAppConfig({
       ...appConfig.value,
       colors: {
-        color: {
-          ...appConfig.value.colors.color,
+        tonal: {
+          ...appConfig.value.colors.tonal,
           primary: color
         },
         text: {
@@ -34,14 +37,14 @@ const useCustomTheme = () => {
     })
   }
 
-  const addTheme = (color: string, text: string, label: string) => {
+  const addTheme = (tonal: string, text: string, label: string) => {
     colorSchemeList.value.push({
-      color, text, label
+      tonal, text, label
     })
   }
 
-  const isCurrentColor = (color: string) => {
-    return appConfig.value.colors.color.primary === color
+  const isCurrentColor = (tonal: string) => {
+    return appConfig.value.colors.tonal.primary === tonal
   }
 
   return {

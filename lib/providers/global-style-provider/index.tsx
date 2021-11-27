@@ -1,6 +1,6 @@
 import { defineComponent, onBeforeUnmount, watch } from 'vue'
 import { AppId } from '../../config/app-id'
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { injectCssStyle, removeCssStyle, updateCssStyle } from '../../utils/style'
 import { useAppConfig } from '../app-config-provider'
 
@@ -14,7 +14,7 @@ const GlobalStyleProvider = defineComponent({
 
   setup (props, { slots }) {
     const { appConfig } = useAppConfig()
-    const colorSchemesNames = Object.values(LancetColorScheme)
+    const colorSchemesNames = Object.values(LctColorScheme)
 
     const updateGlobalStyle = () => {
       const colorConfig = appConfig.value.colors
@@ -25,7 +25,7 @@ const GlobalStyleProvider = defineComponent({
         .replace(/APP_ID/g, AppId)
 
       colorSchemesNames.forEach(scheme => {
-        const backgroundColor = colorConfig.color[scheme] as string
+        const backgroundColor = colorConfig.tonal[scheme] as string
         const textColor = colorConfig.text[scheme] as string
         cssText += (colorSchemeTemplate as string)
           .replace(/THEME_SCHEME/g, scheme)

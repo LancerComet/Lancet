@@ -1,12 +1,12 @@
-enum LancetColorScheme {
+enum LctColorScheme {
   Primary = 'primary',
   Warning = 'warning',
   Error = 'error',
   Success = 'success'
 }
 
-interface LancetColorConfig {
-  color: {
+interface LctColorConfig {
+  tonal: {
     primary: string
     error: string
     success: string
@@ -20,9 +20,9 @@ interface LancetColorConfig {
   }
 }
 
-function createDefaultColorConfig (): LancetColorConfig {
+function createDefaultColorConfig (): LctColorConfig {
   return {
-    color: {
+    tonal: {
       primary: '#C3E8FD',
       warning: '#ffefcc',
       error: '#ffcabe',
@@ -38,7 +38,7 @@ function createDefaultColorConfig (): LancetColorConfig {
 }
 
 export {
-  LancetColorScheme,
-  LancetColorConfig,
+  LctColorScheme,
+  LctColorConfig,
   createDefaultColorConfig
 }

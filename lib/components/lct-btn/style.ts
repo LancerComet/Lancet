@@ -1,5 +1,5 @@
 import { AppId } from '../../config/app-id'
-import { LancetColorConfig, LancetColorScheme } from '../../config/color'
+import { LctColorConfig, LctColorScheme } from '../../config/color'
 import { useAppConfig } from '../../providers/app-config-provider'
 import { darken, lighten } from '../../utils/color'
 import { injectCssStyle, updateCssStyle } from '../../utils/style'
@@ -10,12 +10,12 @@ let styleElementId = ''
 
 function updateDynamicStyle () {
   const { appConfig } = useAppConfig()
-  const colorSchemes = Object.values(LancetColorScheme)
-  const colorValue = appConfig.value.colors as LancetColorConfig
+  const colorSchemes = Object.values(LctColorScheme)
+  const colorValue = appConfig.value.colors as LctColorConfig
 
   let cssText = ''
   colorSchemes.forEach(scheme => {
-    const backgroundColor = colorValue.color[scheme] as string
+    const backgroundColor = colorValue.tonal[scheme] as string
     const textColor = colorValue.text[scheme] as string
 
     cssText += (dynamicCssTemplate as string)

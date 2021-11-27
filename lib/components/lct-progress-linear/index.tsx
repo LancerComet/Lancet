@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { isNumber, isString } from '../../utils/type'
 
 import './index.styl'

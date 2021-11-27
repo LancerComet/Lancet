@@ -7,7 +7,7 @@ const DialogShowcase = defineComponent({
   setup () {
     const { createDialog } = useDialog()
     const createBasicDialog = () => createDialog({
-      title: 'Basic dialog title',
+      title: 'Basic dialog',
       content: 'A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.',
       hideCancelBtn: true,
       width: 320

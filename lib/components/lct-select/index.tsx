@@ -11,7 +11,7 @@ import {
   nextTick
 } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { Ripple } from '../../directives/ripple'
 import { useRules } from '../../hooks/use-rules'
 import { useOutsider } from '../../providers/outside-slot-provider'
@@ -76,8 +76,8 @@ const LctSelect = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     required: {

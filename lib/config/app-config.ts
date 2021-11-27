@@ -1,4 +1,4 @@
-import { createDefaultColorConfig, LancetColorConfig } from './color'
+import { createDefaultColorConfig, LctColorConfig } from './color'
 import { createDefaultTheme, LancetTheme } from './theme'
 
 /**
@@ -13,7 +13,7 @@ interface LancetAppConfig {
   /**
    * 主题色设置.
    */
-  colors: LancetColorConfig
+  colors: LctColorConfig
 }
 
 const createDefaultAppConfig = (): LancetAppConfig => {

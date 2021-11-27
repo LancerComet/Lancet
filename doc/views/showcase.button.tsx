@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { LctBtn, LancetColorScheme, LctCard, LctMica, LctCardContent, LctIcon } from '../../lib'
+import { LctBtn, LctColorScheme, LctCard, LctMica, LctCardContent, LctIcon } from '../../lib'
 
 import style from './showcase.button.module.styl'
 
@@ -21,43 +21,44 @@ const ButtonShowcase = defineComponent({
             <div class={style.showcaseSection}>
               <h6>Tonal (Default)</h6>
               <LctBtn>Primary</LctBtn>
-              <LctBtn color={LancetColorScheme.Warning}>Warning</LctBtn>
-              <LctBtn color={LancetColorScheme.Error}>Error</LctBtn>
-              <LctBtn color={LancetColorScheme.Success}>Success</LctBtn>
+              <LctBtn color={LctColorScheme.Warning}>Warning</LctBtn>
+              <LctBtn color={LctColorScheme.Error}>Error</LctBtn>
+              <LctBtn color={LctColorScheme.Success}>Success</LctBtn>
             </div>
 
             <div class={style.showcaseSection}>
               <h6>Outlined</h6>
               <LctBtn outlined>Primary</LctBtn>
-              <LctBtn color={LancetColorScheme.Warning} outlined>Warning</LctBtn>
-              <LctBtn color={LancetColorScheme.Error} outlined>Error</LctBtn>
-              <LctBtn color={LancetColorScheme.Success} outlined>Success</LctBtn>
+              <LctBtn color={LctColorScheme.Warning} outlined>Warning</LctBtn>
+              <LctBtn color={LctColorScheme.Error} outlined>Error</LctBtn>
+              <LctBtn color={LctColorScheme.Success} outlined>Success</LctBtn>
             </div>
 
             <div class={style.showcaseSection}>
               <h6>Text Button</h6>
               <LctBtn text>Primary</LctBtn>
-              <LctBtn text color={LancetColorScheme.Success}>Success</LctBtn>
+              <LctBtn text color={LctColorScheme.Success}>Success</LctBtn>
             </div>
 
             <div class={style.showcaseSection}>
               <h6>Filled</h6>
               <p>Filled-style buttons use the primary text color as its background, the white color as its text color.</p>
               <LctBtn filled>Primary</LctBtn>
-              <LctBtn color={LancetColorScheme.Warning} filled>Warning</LctBtn>
-              <LctBtn color={LancetColorScheme.Error} filled>Error</LctBtn>
-              <LctBtn color={LancetColorScheme.Success} filled>Success</LctBtn>
+              <LctBtn color={LctColorScheme.Warning} filled>Warning</LctBtn>
+              <LctBtn color={LctColorScheme.Error} filled>Error</LctBtn>
+              <LctBtn color={LctColorScheme.Success} filled>Success</LctBtn>
             </div>
 
             <div class={style.showcaseSection}>
               <h6>Loading</h6>
               <LctBtn loading>Loading</LctBtn>
               <LctBtn loading outlined>Loading</LctBtn>
-              <LctBtn loading color={LancetColorScheme.Warning}>Loading</LctBtn>
-              <LctBtn loading color={LancetColorScheme.Error}>Loading</LctBtn>
-              <LctBtn loading color={LancetColorScheme.Success}>Loading</LctBtn>
+              <LctBtn loading color={LctColorScheme.Warning}>Loading</LctBtn>
+              <LctBtn loading color={LctColorScheme.Error}>Loading</LctBtn>
+              <LctBtn loading color={LctColorScheme.Success}>Loading</LctBtn>
               <LctBtn loading text>Loading</LctBtn>
               <LctBtn loading filled>Loading</LctBtn>
+              <LctBtn loading circle={50}/>
             </div>
 
             <div class={style.showcaseSection}>

@@ -24,8 +24,14 @@ const pageConfig: (IPageConfig | IGroupConfig)[] = [
   {
     name: 'color-theming',
     path: '/color-theming',
-    label: 'Color Theming',
+    label: 'Tone',
     component: () => import('../views/showcase.dynamic-color').then(item => item.DynamicColor)
+  },
+  {
+    name: 'typography-showcase',
+    path: '/typography',
+    label: 'Typography',
+    component: () => import('../views/showcase.typography').then(item => item.TypographyShowcase)
   },
   {
     label: 'Components',
@@ -43,10 +49,10 @@ const pageConfig: (IPageConfig | IGroupConfig)[] = [
         component: () => import('../views/showcase.dialog').then(item => item.DialogShowcase)
       },
       {
-        name: 'typography-showcase',
-        path: '/typography',
-        label: 'Typography',
-        component: () => import('../views/showcase.typography').then(item => item.TypographyShowcase)
+        name: 'toast-showcase',
+        path: '/toast',
+        label: 'Toast',
+        component: () => import('../views/showcase.toast').then(item => item.ToastShowcase)
       }
     ]
   }

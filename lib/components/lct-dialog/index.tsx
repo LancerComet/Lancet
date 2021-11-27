@@ -1,6 +1,6 @@
 import { computed, defineComponent, onMounted, PropType, ref } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { isFunction, isEmptyString, isString, isNumber } from '../../utils/type'
 import { LctBtn } from '../lct-btn'
 import { LctCard } from '../lct-card/lct-card'
@@ -161,7 +161,7 @@ const LctDialog = defineComponent({
               disabled={isLocked.value}
               loading={isLocked.value}
               onClick={onConfirmButtonClick}
-              color={LancetColorScheme.Primary}
+              color={LctColorScheme.Primary}
             >{confirmBtnText.value}</LctBtn>
       )
 
@@ -169,9 +169,9 @@ const LctDialog = defineComponent({
         props.hideCancelBtn
           ? null
           : <LctBtn
-              class='cancel-btn'
-              disabled={isLocked.value} onClick={onCancelButtonClick}
-              color={LancetColorScheme.Primary} text
+                class='cancel-btn'
+                disabled={isLocked.value} onClick={onCancelButtonClick}
+                color={LctColorScheme.Primary} text
             >{cancelBtnText.value}</LctBtn>
       )
 
