@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 
-import lancetLogoImg from '../assets/lancet-logo.png'
+import { LancetLogo } from '../components/lancet-logo'
 import style from './index.module.styl'
 
 const IndexPage = defineComponent({
@@ -8,7 +8,7 @@ const IndexPage = defineComponent({
     return () => (
       <div class={style.indexPage}>
         <div>
-          <img src={lancetLogoImg} width='300' />
+          <LancetLogo width={300}/>
 
           <div>
             <h1>
@@ -16,7 +16,7 @@ const IndexPage = defineComponent({
               <br/>
               <small>(Material Design + Vue) * 3</small>
             </h1>
-            <p>Building Material Design 3 App by using Vue 3.</p>
+            <p>Yet another Material Design like Vue 3 UI Components library.</p>
           </div>
         </div>
       </div>

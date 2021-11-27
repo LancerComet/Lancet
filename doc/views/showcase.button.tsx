@@ -35,18 +35,18 @@ const ButtonShowcase = defineComponent({
             </div>
 
             <div class={style.showcaseSection}>
+              <h6>Text Button</h6>
+              <LctBtn text>Primary</LctBtn>
+              <LctBtn text color={LancetColorScheme.Success}>Success</LctBtn>
+            </div>
+
+            <div class={style.showcaseSection}>
               <h6>Filled</h6>
-              <p>Filled button style uses the primary text color as its background, and the text color always be the white.</p>
+              <p>Filled-style buttons use the primary text color as its background, the white color as its text color.</p>
               <LctBtn filled>Primary</LctBtn>
               <LctBtn color={LancetColorScheme.Warning} filled>Warning</LctBtn>
               <LctBtn color={LancetColorScheme.Error} filled>Error</LctBtn>
               <LctBtn color={LancetColorScheme.Success} filled>Success</LctBtn>
-            </div>
-
-            <div class={style.showcaseSection}>
-              <h6>Text Button</h6>
-              <LctBtn text>Primary</LctBtn>
-              <LctBtn text color={LancetColorScheme.Success}>Success</LctBtn>
             </div>
 
             <div class={style.showcaseSection}>

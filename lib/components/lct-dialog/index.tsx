@@ -171,7 +171,7 @@ const LctDialog = defineComponent({
           : <LctBtn
               class='cancel-btn'
               disabled={isLocked.value} onClick={onCancelButtonClick}
-              color={LancetColorScheme.Primary} outlined
+              color={LancetColorScheme.Primary} text
             >{cancelBtnText.value}</LctBtn>
       )
 

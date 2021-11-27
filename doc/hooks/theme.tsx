@@ -12,7 +12,7 @@ const useCustomTheme = () => {
     { color: '#fbdace', text: '#9e5750', label: '🌸 Sakura' },
     { color: '#b2ddc3', text: '#41716c', label: '🌳 Forest' },
     { color: '#ffeacb', text: '#ef9e5f', label: '🎃 Halloween' },
-    { color: '#d0c8d7', text: '#5a5168', label: '🍆 Eggplant' }
+    { color: '#d0c8d7', text: '#5a5168', label: '🍆 Nasu' }
   ]
 
   const setAppTheme = (color: string, text: string) => {
