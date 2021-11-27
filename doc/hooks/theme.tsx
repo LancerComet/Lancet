@@ -10,7 +10,7 @@ const colorSchemeList = ref([
   },
   { tonal: '#fbdace', text: '#9e5750', label: '🌸 Sakura' },
   { tonal: '#b2ddc3', text: '#41716c', label: '🌳 Forest' },
-  { tonal: '#ffeacb', text: '#ef9e5f', label: '🎃 Halloween' },
+  { tonal: '#ffb850', text: '#703F19', label: '🎃 Halloween' },
   { tonal: '#d0c8d7', text: '#5a5168', label: '🍆 Qiezi' },
   { tonal: '#a1e5d8', text: '#538f84', label: '🎤 Vocaloid' },
   { tonal: '#b4c8dc', text: '#3C3C50', label: '🚢 Navy' },

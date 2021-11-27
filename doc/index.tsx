@@ -1,6 +1,7 @@
 import { defineComponent, createApp } from 'vue'
 
 import 'material-icons/iconfont/material-icons.css'
+import './style/index.styl'
 
 import { Lancet, LctApp } from '../lib'
 import { AppLayout } from './layout'

@@ -1,6 +1,6 @@
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
-import { LctBtn, LctCard, LctCardContent, LctMica, useDialog } from '../../lib'
+import { LctBtn, LctCard, LctCardContent, LctDialog, LctMica, useDialog } from '../../lib'
 import style from './showcase.dialog.module.styl'
 
 const DialogShowcase = defineComponent({
@@ -51,6 +51,11 @@ const DialogShowcase = defineComponent({
       }
     })
 
+    const isInlineDialogVisible = ref(false)
+    const openInlineDialog = () => {
+      isInlineDialogVisible.value = true
+    }
+
     return () => (
       <div class={style.dialogShowcase}>
         <LctCard overHidden radius={28} withMargin>
@@ -63,10 +68,59 @@ const DialogShowcase = defineComponent({
         </LctCard>
 
         <LctCard withMargin>
-          <LctCardContent class={style.buttonList}>
-            <LctBtn onClick={createBasicDialog}>Basic Dialog</LctBtn>
-            <LctBtn onClick={createComponentDialog} outlined>Dialog using Component</LctBtn>
-            <LctBtn onClick={createSelfDestroyDialog} outlined>Self closing</LctBtn>
+          <LctCardContent>
+            <h5>Different ways to create a dialog</h5>
+            <p>There are two ways to create a dialog:</p>
+            <ul>
+              <li>Global hook: Calling the global function which is provided by Lancet.</li>
+              <li>Inline component: Place a dialog component into your component and handle everything.</li>
+            </ul>
+            <p>For most situations calling the global function is the best choice. But if you want to do some advanced jobs you can use the inline component as well.</p>
+          </LctCardContent>
+        </LctCard>
+
+        <LctCard withMargin>
+          <LctCardContent>
+            <h5>Global hook</h5>
+            <div>
+              <pre>{
+                '// Setup function.\n' +
+                'const { createDialog } = useDialog()\n' +
+                'const greeting = () => {\n' +
+                '  createDialog({\n' +
+                '    title: "Greeting",\n' +
+                '    content: "How is doing today?"\n' +
+                '  })\n' +
+                '}\n' +
+                '\n' +
+                '// Template.\n' +
+                '<LctBtn onClick={greeting}>Hello!</LctBtn>'
+              }</pre>
+            </div>
+            <div class={style.buttonList}>
+              <LctBtn onClick={createBasicDialog}>Basic Dialog</LctBtn>
+              <LctBtn onClick={createComponentDialog} outlined>Dialog using Component</LctBtn>
+              <LctBtn onClick={createSelfDestroyDialog} outlined>Self closing</LctBtn>
+            </div>
+          </LctCardContent>
+        </LctCard>
+
+        <LctCard withMargin>
+          <LctCardContent>
+            <h5>Inline component</h5>
+            <div class={style.buttonList}>
+              <LctBtn onClick={openInlineDialog}>Basic Dialog</LctBtn>
+            </div>
+            <LctDialog
+              v-model={isInlineDialogVisible.value}
+              title='Inline dialog'
+            >
+              <div>
+                <p>This is a inline dialog.</p>
+                <p>You have to control everything of this dialog, that means the state, the functions, the other stuffs that related to this job should be handled.</p>
+                <p>And you might have noticed, the closing transition is gone because its your job now 🤣.</p>
+              </div>
+            </LctDialog>
           </LctCardContent>
         </LctCard>
       </div>
