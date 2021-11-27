@@ -70,10 +70,10 @@ const LctNavView = defineComponent({
           <LctMica class={[
             'lct-nav-view-mica',
             isDisplayActionBarMica.value ? 'show' : 'hidden'
-          ]}/>
+          ]} opacity={0.4} />
           <div class='lct-nav-view-action-bar-content'>
             <LctBtn
-              class='lct-nav-drawer-button' transparent onClick={toggleOpen}
+              class='lct-nav-drawer-button' text onClick={toggleOpen}
               circle={50}
             >
               <LctIcon>{

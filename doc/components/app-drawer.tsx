@@ -16,7 +16,7 @@ const AppDrawer = defineComponent({
           <RouterLink class={style.pageLink} to={{ name: item.name }} activeClass='primary-text'>
             <LctBtn
               class={style.linkButton}
-              transparent={item.name !== route.name}
+              text={item.name !== route.name}
             >{ item.label }</LctBtn>
           </RouterLink>
         ))

@@ -7,6 +7,7 @@ import { LctProgressCircular } from '../lct-progress-circular'
 import { updateDynamicStyle } from './style'
 
 import './style.general.styl'
+import { useAppConfig } from '../../providers/app-config-provider'
 
 const LctBtn = defineComponent({
   name: 'LctBtn',
@@ -56,7 +57,7 @@ const LctBtn = defineComponent({
       default: LancetColorScheme.Primary
     },
 
-    transparent: {
+    text: {
       type: Boolean as PropType<boolean>,
       default: false
     },
@@ -79,6 +80,11 @@ const LctBtn = defineComponent({
     circle: {
       type: Number as PropType<number>,
       default: 0
+    },
+
+    filled: {
+      type: Boolean as PropType<boolean>,
+      default: false
     }
   },
 
@@ -86,6 +92,7 @@ const LctBtn = defineComponent({
 
   setup (props, { slots, emit }) {
     const { outlined, color, width, height, minWidth, maxWidth } = toRefs(props)
+    const { appConfig } = useAppConfig()
 
     const cssValueFilter = (value: string | number | undefined): string | undefined => {
       return isNumber(value)
@@ -94,16 +101,23 @@ const LctBtn = defineComponent({
     }
 
     const style = computed(() => {
-      const result = {
+      const result: Partial<CSSStyleDeclaration> = {
         width: cssValueFilter(width.value),
         height: cssValueFilter(height.value),
         minWidth: cssValueFilter(minWidth.value),
         maxWidth: cssValueFilter(maxWidth.value)
       }
+
       if (isNumber(props.circle) && props.circle > 0) {
         result.width = cssValueFilter(props.circle)
         result.height = cssValueFilter(props.circle)
       }
+
+      if (props.filled) {
+        result.backgroundColor = appConfig.value.colors.text[props.color]
+        result.color = '#fff'
+      }
+
       return result
     })
 
@@ -115,11 +129,11 @@ const LctBtn = defineComponent({
       const colorScheme = color.value
       const result: string[] = ['lct-button']
 
-      if (props.transparent) {
-        result.push(`transparent ${colorScheme}-text`)
+      if (props.text) {
+        result.push(`text ${colorScheme}-text`)
       } else if (outlined.value) {
         result.push('outlined', `${colorScheme}-border`, `${colorScheme}-text`)
-      } else {
+      } else if (!props.filled) {
         result.push(`${colorScheme}-background ${colorScheme}-text`)
       }
 

@@ -77,15 +77,17 @@ $drawerWidth = 300px
       .lct-nav-view-drawer-content
         height: 100%
         position: relative
-        overflow: auto
+        overflow: hidden
 
         @media screen and (max-width: $pcBoundary)
           border-radius: 28px !important
 
         .drawer-content
+          height: 100%
           position: relative
           padding: 20px
           box-sizing: border-box
+          overflow: auto
 
         .drawer-mica
           @media screen and (min-width: $pcBoundary)

@@ -95,7 +95,7 @@ const LctPagination = defineComponent({
 
     return () => (
       <div class='lct-pagination'>
-        <LctBtn transparent onClick={goPrev} class={['pagination-change', 'pagination-btn']} minWidth={0}>
+        <LctBtn text onClick={goPrev} class={['pagination-change', 'pagination-btn']} minWidth={0}>
           <LctIcon>keyboard_arrow_left</LctIcon>
         </LctBtn>
         {updateList.value.map((item: string | number) => (
@@ -106,7 +106,7 @@ const LctPagination = defineComponent({
             minWidth={0}
           >{item}</LctBtn>
         ))}
-        <LctBtn transparent onClick={goNext} class={['pagination-change', 'pagination-btn']} minWidth={0}>
+        <LctBtn text onClick={goNext} class={['pagination-change', 'pagination-btn']} minWidth={0}>
           <LctIcon>keyboard_arrow_right</LctIcon>
         </LctBtn>
         <LctTextfield

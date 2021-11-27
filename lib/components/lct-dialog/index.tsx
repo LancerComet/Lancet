@@ -178,7 +178,7 @@ const LctDialog = defineComponent({
       const CloseBtn = () => (
         props.hideCloseBtn
           ? null
-          : <LctBtn class='close-button' transparent onClick={onCancelButtonClick}>
+          : <LctBtn class='close-button' text onClick={onCancelButtonClick}>
               <LctIcon>close</LctIcon>
             </LctBtn>
       )

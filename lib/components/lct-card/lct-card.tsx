@@ -26,6 +26,11 @@ const LctCard = defineComponent({
     radius: {
       type: Number as PropType<number>,
       default: 12
+    },
+
+    overHidden: {
+      type: Boolean as PropType<boolean>,
+      default: false
     }
   },
 
@@ -45,7 +50,8 @@ const LctCard = defineComponent({
         class={[
           'lct-card',
           props.elevated ? 'elevated' : null,
-          props.withMargin ? 'with-margin' : null
+          props.withMargin ? 'with-margin' : null,
+          props.overHidden ? 'over-hidden' : null
         ]}
         style={{
           borderRadius: props.radius + 'px'

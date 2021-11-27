@@ -9,18 +9,16 @@ const DynamicColor = defineComponent({
     return () => (
       <article>
         <h1>Dynamic Color</h1>
+        <p>Select your favourite theme by click the buttons below.</p>
         <div>
-          <p>Select your favourite theme by click the buttons below:</p>
-          <div>
-            {
-              colorSchemeList.map(item => (
-                <LctBtn
-                  onClick={() => setAppTheme(item.color, item.text)}
-                  transparent={!isCurrentColor(item.color)}
-                >{item.label}</LctBtn>
-              ))
-            }
-          </div>
+          {
+            colorSchemeList.map(item => (
+              <LctBtn
+                onClick={() => setAppTheme(item.color, item.text)}
+                text={!isCurrentColor(item.color)}
+              >{item.label}</LctBtn>
+            ))
+          }
         </div>
       </article>
     )

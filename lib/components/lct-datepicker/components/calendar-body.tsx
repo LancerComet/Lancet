@@ -137,7 +137,7 @@ const CalendarBody = defineComponent({
           <div class='calendar-content'>
             <div>
               <div class='calendar-controls'>
-                <LctBtn minWidth='0' onClick={() => switchMonth(-1)} transparent>
+                <LctBtn minWidth='0' onClick={() => switchMonth(-1)} text>
                   <LctIcon>keyboard_arrow_left</LctIcon>
                 </LctBtn>
 
@@ -149,7 +149,7 @@ const CalendarBody = defineComponent({
                   yearRange={props.yearRange}
                 />
 
-                <LctBtn onClick={() => switchMonth(1)} transparent minWidth='0'>
+                <LctBtn onClick={() => switchMonth(1)} text minWidth='0'>
                   <LctIcon>keyboard_arrow_right</LctIcon>
                 </LctBtn>
               </div>
@@ -173,7 +173,7 @@ const CalendarBody = defineComponent({
                                 isSelected ? 'selected' : null,
                                 date && isToday(date) ? `today ${props.color}-text` : null
                               ]}
-                              minWidth='0' color={props.color} transparent={!isSelected}
+                              minWidth='0' color={props.color} text={!isSelected}
                               disabled={!date}
                               onClick={() => onDateBlockClick(date as Dayjs)}
                             >{date?.format('DD') ?? null}</LctBtn>

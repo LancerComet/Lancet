@@ -1,49 +1,14 @@
 import { defineComponent } from 'vue'
 import { RouterView } from 'vue-router'
 
-import { LctCard, LctCardContent, LctNavView } from '../../lib'
+import { LctNavView } from '../../lib'
 import { ActionBar } from '../components/action-bar'
 import { AppDrawer } from '../components/app-drawer'
-import { ButtonShowcase } from '../components/button-showcase'
-import { DialogShowcase } from '../components/dialog-showcase'
-import { DynamicThemeShowcase } from '../components/dynamic-theme.showcase'
-import { FormShowcase } from '../components/form-showcase'
-import { ProgressShowcase } from '../components/progress-showcase'
-import { SwitcherShowcase } from '../components/switcher-showcase'
-import { TableShowcase } from '../components/table-showcase'
-import { TabsShowcase } from '../components/tabs-showcase'
-import { ToastShowcase } from '../components/toast-showcase'
-import { TooltipShowcase } from '../components/tooltip-showcase'
-import { TypographyShowcase } from '../components/typography-showcase'
 
 import style from './index.module.styl'
 
 const AppLayout = defineComponent({
   setup () {
-    const AppContent = () => (
-      <LctCard>
-        <LctCardContent>
-          <h4>
-            <span>Lancet</span>
-            <br/>
-            <small>A little tiny, Material 3 style Vue 3 UI component library.</small>
-          </h4>
-
-          <DynamicThemeShowcase />
-          <ButtonShowcase />
-          <SwitcherShowcase />
-          <TypographyShowcase />
-          <TabsShowcase />
-          <FormShowcase />
-          <TableShowcase />
-          <DialogShowcase />
-          <ToastShowcase />
-          <ProgressShowcase />
-          <TooltipShowcase />
-        </LctCardContent>
-      </LctCard>
-    )
-
     return () => (
       <LctNavView
         class={style.appLayout}
