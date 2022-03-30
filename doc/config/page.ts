@@ -19,19 +19,19 @@ const pageConfig: (IPageConfig | IGroupConfig)[] = [
     name: 'index',
     path: '/',
     label: 'Home',
-    component: () => import('../views/index').then(item => item.IndexPage)
+    component: () => import('../views/home/index').then(item => item.IndexPage)
   },
   {
     name: 'color-theming',
     path: '/color-theming',
     label: 'Tone',
-    component: () => import('../views/showcase.dynamic-color').then(item => item.DynamicColor)
+    component: () => import('../views/tone').then(item => item.DynamicColor)
   },
   {
     name: 'typography-showcase',
     path: '/typography',
     label: 'Typography',
-    component: () => import('../views/showcase.typography').then(item => item.TypographyShowcase)
+    component: () => import('../views/typography').then(item => item.Typography)
   },
   {
     label: 'Components',
