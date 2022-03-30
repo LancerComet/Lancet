@@ -63,9 +63,9 @@ const LctTable = defineComponent({
 
           <tbody class={['lct-tbody', props.loading ? 'dark' : '']}>
             {
-              props.items.map(value => (
+              props.items.map((value, index) => (
                 slots.items
-                  ? <>{slots.items?.(value)}</>
+                  ? <>{slots.items?.(value, index)}</>
                   : <tr class='lct-tr'>
                     {
                       props.headers?.map(head => (
