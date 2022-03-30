@@ -4,7 +4,7 @@ import { computed, defineComponent, onBeforeUnmount, PropType, ref, toRef, Trans
 import { useRules } from '../../hooks/use-rules'
 import { resetHour } from '../../utils/date'
 import { Rule } from '../../utils/validator'
-import { LctCard } from '../lct-card'
+import { LctCard } from '../lct-card/lct-card'
 import { LctInput } from '../lct-input'
 import { LctMenu } from '../lct-menu'
 import { LctTextfield } from '../lct-textfield'

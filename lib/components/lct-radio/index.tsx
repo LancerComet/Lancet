@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType, toRefs } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { Ripple } from '../../directives/ripple'
 import { isEqual } from '../../utils/equal'
 import { preventKeys } from '../../utils/event'
@@ -36,8 +36,8 @@ const LctRadio = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     }
   },
 

@@ -1,6 +1,6 @@
 import { defineComponent, inject, provide, ref, TransitionGroup } from 'vue'
 import { LctToast } from '../../components/lct-toast'
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { randomString } from '../../utils/random'
 import { isNumber } from '../../utils/type'
 
@@ -31,7 +31,7 @@ const LctToastProvider = defineComponent({
     const toasts = ref<{
       id: string
       text: string
-      color: LancetColorScheme
+      color: LctColorScheme
     }[]>([])
 
     const destroyToast = (id: string) => {
@@ -41,19 +41,19 @@ const LctToastProvider = defineComponent({
 
     const createToastFunc: CreateToastFunc = (text, type, timeout) => {
       const toastId = 'toast_' + randomString()
-      let color: LancetColorScheme
+      let color: LctColorScheme
       switch (type) {
         case 'warning':
-          color = LancetColorScheme.Warning
+          color = LctColorScheme.Warning
           break
         case 'error':
-          color = LancetColorScheme.Error
+          color = LctColorScheme.Error
           break
         case 'success':
-          color = LancetColorScheme.Success
+          color = LctColorScheme.Success
           break
         default:
-          color = LancetColorScheme.Primary
+          color = LctColorScheme.Primary
           break
       }
       toasts.value.push({

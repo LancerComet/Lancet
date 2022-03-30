@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
+import svgLoader from 'vite-svg-loader'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,7 +21,8 @@ export default defineConfig({
     }),
     eslintPlugin({
       cache: false
-    })
+    }),
+    svgLoader()
   ],
 
   css: {
@@ -53,11 +55,13 @@ export default defineConfig({
       external: [
         'vue'
       ],
+
       output: {
         globals: {
           vue: 'Vue'
         }
       },
+
       plugins: [
         typescript({
           rootDir: path.resolve(__dirname, './lib'),

@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { isNumber, isString } from '../../utils/type'
 
 import './index.styl'
@@ -15,7 +15,7 @@ const LctProgressCircular = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
+      type: String as PropType<LctColorScheme>,
       default: null
     }
   },

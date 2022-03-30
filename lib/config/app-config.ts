@@ -1,4 +1,4 @@
-import { createDefaultColorConfig, LancetColorConfig } from './color'
+import { createDefaultColorConfig, LctColorConfig } from './color'
 import { createDefaultTheme, LancetTheme } from './theme'
 
 /**
@@ -8,25 +8,22 @@ interface LancetAppConfig {
   /**
    * 当前主题.
    */
-  theme?: LancetTheme
+  theme: LancetTheme
 
   /**
    * 主题色设置.
    */
-  colors?: LancetColorConfig
+  colors: LctColorConfig
 }
 
-/**
- * 创建默认全局配置.
- */
-function createDefaultConfig (): LancetAppConfig {
+const createDefaultAppConfig = (): LancetAppConfig => {
   return {
     theme: createDefaultTheme(),
     colors: createDefaultColorConfig()
-  }
+  } as LancetAppConfig
 }
 
 export {
   LancetAppConfig,
-  createDefaultConfig
+  createDefaultAppConfig
 }

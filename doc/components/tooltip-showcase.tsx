@@ -10,7 +10,7 @@ const TooltipShowcase = defineComponent({
     }
 
     return () => (
-      <LctCard title='Tooltip' elevated withMargin>
+      <LctCard title='Tooltip' withMargin>
         <div>
           <LctTooltips v-slots={slots}>
             <LctBtn >Top</LctBtn>

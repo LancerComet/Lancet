@@ -35,6 +35,6 @@ Please check `lib/components` folder to see what kind of components we provide.
 
 ## Showcase
 
-The showcase code is located in `dev` folder.
+The showcase code is located in `doc` folder.
 
 Checkout how the components work by launching the project with `npm run dev`.

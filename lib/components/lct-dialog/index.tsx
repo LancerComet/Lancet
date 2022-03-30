@@ -1,12 +1,12 @@
 import { computed, defineComponent, onMounted, PropType, ref } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { isFunction, isEmptyString, isString, isNumber } from '../../utils/type'
 import { LctBtn } from '../lct-btn'
+import { LctCard } from '../lct-card/lct-card'
+import { LctIcon } from '../lct-icon'
 
 import './index.styl'
-
-const ComponentName = 'LctDialog'
 
 /**
  * 弹窗回调函数参数.
@@ -32,7 +32,7 @@ type CreateDialogCallback = (dialog: CreateDialogCallbackParam) => void | Promis
  * 弹窗组件.
  */
 const LctDialog = defineComponent({
-  name: ComponentName,
+  name: 'LctDialog',
 
   props: {
     modelValue: {
@@ -153,7 +153,7 @@ const LctDialog = defineComponent({
     })
 
     const DialogComponent = () => {
-      const createConfirmBtn = () => (
+      const ConfirmBtn = () => (
         props.hideConfirmBtn
           ? null
           : <LctBtn
@@ -161,36 +161,45 @@ const LctDialog = defineComponent({
               disabled={isLocked.value}
               loading={isLocked.value}
               onClick={onConfirmButtonClick}
-              color={LancetColorScheme.Primary}
+              color={LctColorScheme.Primary}
             >{confirmBtnText.value}</LctBtn>
       )
-      const createCancelBtn = () => (
+
+      const CancelBtn = () => (
         props.hideCancelBtn
           ? null
           : <LctBtn
-              class='cancel-btn'
-              disabled={isLocked.value} onClick={onCancelButtonClick}
-              color={LancetColorScheme.Primary} outlined
+                class='cancel-btn'
+                disabled={isLocked.value} onClick={onCancelButtonClick}
+                color={LctColorScheme.Primary} text
             >{cancelBtnText.value}</LctBtn>
       )
-      const createCloseBtn = () => (
+
+      const CloseBtn = () => (
         props.hideCloseBtn
           ? null
-          : <LctBtn minWidth='0' class='close-button' transparent onClick={onCancelButtonClick}>
-              <div class='close-icon'></div>
+          : <LctBtn class='close-button' text circle={50} onClick={onCancelButtonClick}>
+              <LctIcon>close</LctIcon>
             </LctBtn>
       )
+
+      const DialogTitle = () => (
+        isEmptyString(props.title) ? null : <h6 class='dialog-title'>{props.title}</h6>
+      )
+
       return (
         <div class='lct-dialog'>
           <div class='background-mask'/>
-          <div class='dialog-body' style={dialogBodyStyle.value}>
-            { createCloseBtn() }
-            { isEmptyString(props.title) ? null : <div class='dialog-title'>{props.title}</div> }
-            <div class='dialog-content'>{slots.default?.() ?? props.content}</div>
-            <div class='btn-container'>
-              { createConfirmBtn() }
-              { createCancelBtn() }
-            </div>
+          <div style={dialogBodyStyle.value}>
+            <LctCard class='dialog-body' radius={28}>
+              <CloseBtn />
+              <DialogTitle />
+              <div class='dialog-content'>{slots.default?.() ?? props.content}</div>
+              <div class='btn-container'>
+                <CancelBtn />
+                <ConfirmBtn />
+              </div>
+            </LctCard>
           </div>
         </div>
       )

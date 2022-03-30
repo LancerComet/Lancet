@@ -1,30 +1,31 @@
 .lct-switcher
   display: inline-block
   width: 42px
-  height: 20px
+  height: 18px
   position: relative
   margin: 10px 5px
-  background-color: #ccc
+  background-color: #eee
   border-radius: 100px
   padding: 0 3px
   cursor: pointer
   transition: all $easing .4s
 
   &.disabled
-    background-color: #eee
+    opacity: .4
     cursor: default
 
-  .switch-handler
-    $size = 14px
-    $margin = 3px
+  .switch-handle
+    $size = 22px
+    $margin = 0px
     width: $size
     height: @width
     position: absolute
-    top: $margin
+    top: 50%
     left: $margin
-    background-color: #fff
+    background-color: #ccc
     border-radius: 50%
     transition: all $easing .2s
+    transform: translate(0, -50%)
 
     &.activated
       left: s("calc(100% - %s - %s)", $size, $margin)
@@ -32,5 +33,5 @@
 
   .loading-indicator
     position: relative
-    top: -2px
-    left: -1px
+    left: 2px
+    top: 2px

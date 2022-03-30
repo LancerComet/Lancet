@@ -1,10 +1,11 @@
-import { computed, defineComponent, onBeforeUnmount } from 'vue'
+import { defineComponent, onBeforeUnmount, watch } from 'vue'
 import { AppId } from '../../config/app-id'
-import { createDefaultColorConfig, LancetColorConfig, LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { injectCssStyle, removeCssStyle, updateCssStyle } from '../../utils/style'
 import { useAppConfig } from '../app-config-provider'
 
-import styleTemplate from './index.styl'
+import colorSchemeTemplate from './global.color-scheme.styl'
+import staticStyleTempalte from './global.static.styl'
 
 let styleElementId = ''
 
@@ -12,22 +13,24 @@ const GlobalStyleProvider = defineComponent({
   name: 'GlobalStyleProvider',
 
   setup (props, { slots }) {
-    const config = useAppConfig()
-    const colorSchemes = Object.values(LancetColorScheme)
-    const colorValue = computed<LancetColorConfig>(() => {
-      return {
-        ...createDefaultColorConfig(),
-        ...config.value.colors
-      } as LancetColorConfig
-    })
+    const { appConfig } = useAppConfig()
+    const colorSchemesNames = Object.values(LctColorScheme)
 
     const updateGlobalStyle = () => {
+      const colorConfig = appConfig.value.colors
       let cssText = ''
-      colorSchemes.forEach(scheme => {
-        const color = colorValue.value[scheme] as string
-        cssText += (styleTemplate as string)
+
+      cssText += (staticStyleTempalte as string)
+        .replace(/TEXT_COLOR/g, colorConfig.text.primary)
+        .replace(/APP_ID/g, AppId)
+
+      colorSchemesNames.forEach(scheme => {
+        const backgroundColor = colorConfig.tonal[scheme] as string
+        const textColor = colorConfig.text[scheme] as string
+        cssText += (colorSchemeTemplate as string)
           .replace(/THEME_SCHEME/g, scheme)
-          .replace(/COLOR_VALUE/g, color)
+          .replace(/BACKGROUND_COLOR/g, backgroundColor)
+          .replace(/TEXT_COLOR/g, textColor)
           .replace(/APP_ID/g, AppId)
       })
 
@@ -37,6 +40,10 @@ const GlobalStyleProvider = defineComponent({
         updateCssStyle(styleElementId, cssText)
       }
     }
+
+    watch(appConfig, () => {
+      updateGlobalStyle()
+    })
 
     updateGlobalStyle()
 
