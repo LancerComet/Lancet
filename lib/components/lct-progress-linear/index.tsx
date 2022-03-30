@@ -15,7 +15,7 @@ const LctProgressLinear = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
+      type: String as PropType<LctColorScheme>,
       default: null
     },
 

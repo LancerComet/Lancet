@@ -13,6 +13,11 @@ const LctMenu = defineComponent({
     disabled: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+
+    fullScreen: {
+      type: Boolean as PropType<boolean>,
+      default: false
     }
   },
 
@@ -59,9 +64,11 @@ const LctMenu = defineComponent({
     return () => (
       <div class='lct-menu'>
         <div class='menu-activator' onClick={onActivatorClick}>{slots.activator?.()}</div>
-        <Transition enterActiveClass='lct-menu-entry-animation' leaveActiveClass='lct-menu-close-animation'>{
-          isOpen.value && (<div class='menu-slot' onClick={onSlotClick}>{slots.default?.()}</div>)
-        }</Transition>
+        <div class={['position-setter', props.fullScreen ? 'full-screen' : '']}>
+          <Transition enterActiveClass='lct-menu-entry-animation' leaveActiveClass='lct-menu-close-animation'>{
+            isOpen.value && (<div class='menu-slot' onClick={onSlotClick}>{slots.default?.()}</div>)
+          }</Transition>
+        </div>
       </div>
     )
   }

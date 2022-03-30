@@ -2,7 +2,6 @@ import { computed, defineComponent } from 'vue'
 import { LctColorScheme } from '../../config/color'
 import { isNumber } from '../../utils/type'
 import { LctBtn } from '../lct-btn'
-import { LctIcon } from '../lct-icon'
 import { LctTextfield } from '../lct-textfield'
 
 import './index.styl'
@@ -109,15 +108,16 @@ const LctPagination = defineComponent({
         <LctBtn text onClick={goNext} class={['pagination-change', 'pagination-btn']} minWidth={0}>
           <LctIcon>keyboard_arrow_right</LctIcon>
         </LctBtn>
-        <LctTextfield
-          class='pagination-input'
-          type='number'
-          placeholder='页码'
-          label='输入后回车'
-          width={80}
-          rules={customPageRule}
-          onKeyup={emitPaging}
-        />
+        <div class='pagination-input'>
+          <span>跳转至</span>
+          <LctTextfield
+            type='number'
+            width={48}
+            rules={customPageRule}
+            onKeyup={emitPaging}
+          />
+          <span>页</span>
+        </div>
       </div>
     )
   }

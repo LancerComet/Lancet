@@ -1,9 +1,9 @@
 import { computed, defineComponent, onBeforeUnmount, onMounted, PropType, ref, toRef, Transition, unref } from 'vue'
 import { useRules } from '../../hooks/use-rules'
 import { isNumber, isUnEmptyString } from '../../utils/type'
+import { Rule } from '../../utils/validator'
 import { LctInput } from '../lct-input'
 import './index.styl'
-import { Rule } from '../../utils/validator'
 
 const ComponentName = 'LctTextfield'
 
