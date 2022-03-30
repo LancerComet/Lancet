@@ -1,12 +1,13 @@
 import { computed, defineComponent, PropType, toRefs, Transition } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { Ripple } from '../../directives/ripple'
 import { isEqual } from '../../utils/equal'
 import { isKeyEnterOrSpace } from '../../utils/inputs'
 import { isArray, isUnEmptyString } from '../../utils/type'
 
 import './index.styl'
+import { useAppConfig } from '../../providers/app-config-provider'
 
 const ComponentName = 'LctCheckbox'
 
@@ -37,14 +38,15 @@ const LctCheckbox = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     }
   },
 
   emits: ['update:modelValue'],
 
   setup (props, { emit }) {
+    const { appConfig } = useAppConfig()
     const { modelValue, value } = toRefs(props)
 
     const isChecked = computed(() => {
@@ -81,16 +83,13 @@ const LctCheckbox = defineComponent({
     return () => (
       <label class='lct-checkbox'>
         <div
-          class={[
-            'checkbox-style',
-            isChecked.value ? `selected ${props.color}-border` : null
-          ]}
+          class={['checkbox-style', `${props.color}-background`]}
           role='checkbox' aria-checked={isChecked.value}
           tabindex='0' onKeyup={onKeyup}
         >
           <Transition enterActiveClass='enter-animation' leaveActiveClass='leave-animation'>{
             isChecked.value
-              ? <div class={['checkbox-hinter', `${props.color}-background`]}>
+              ? <div class='checkbox-hinter' style={{ backgroundColor: appConfig.value.colors.text.primary }}>
                   <div class='check-icon'/>
                 </div>
               : null

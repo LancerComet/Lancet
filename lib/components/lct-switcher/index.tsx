@@ -1,6 +1,7 @@
 import { computed, defineComponent, PropType } from 'vue'
 
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
+import { useAppConfig } from '../../providers/app-config-provider'
 import { isString } from '../../utils/type'
 import { LctProgressCircular } from '../lct-progress-circular'
 
@@ -23,8 +24,8 @@ const LctSwitcher = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     trueValue: {
@@ -41,8 +42,22 @@ const LctSwitcher = defineComponent({
   emits: ['update:modelValue'],
 
   setup (props, { emit }) {
+    const { appConfig } = useAppConfig()
+
     const isActivated = computed(() => {
       return props.modelValue === props.trueValue
+    })
+
+    const backgroundClassName = computed(() => {
+      return isString(props.color) ? `${props.color}-background` : undefined
+    })
+
+    const handleStyle = computed(() => {
+      return {
+        backgroundColor: isActivated.value
+          ? appConfig.value.colors.tonal[props.color]
+          : undefined
+      }
     })
 
     const toggleSelect = () => {
@@ -59,14 +74,25 @@ const LctSwitcher = defineComponent({
       <div
         class={[
           'lct-switcher',
-          isActivated.value ? (isString(props.color) ? `${props.color}-background` : null) : null,
+          isActivated.value ? backgroundClassName.value : null,
           props.disabled ? 'disabled' : null
         ]}
         onClick={toggleSelect}
       >
-        <div class={['switch-handler', isActivated.value ? 'activated' : null]}>{
+        <div
+          class={['switch-handle', isActivated.value ? 'activated' : null]}
+          style={handleStyle.value}
+        >{
           props.loading
-            ? <LctProgressCircular class='loading-indicator' size={15} color={props.color}/>
+            ? <LctProgressCircular
+                class='loading-indicator'
+                style={{
+                  tonal: isActivated.value
+                    ? '#ffffff'
+                    : appConfig.value.colors.text[props.color]
+                }}
+                size={18}
+              />
             : null
         }</div>
       </div>

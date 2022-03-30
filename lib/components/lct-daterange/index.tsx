@@ -1,9 +1,9 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { computed, defineComponent, onBeforeUnmount, PropType, ref, toRef, Transition } from 'vue'
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { useRules } from '../../hooks/use-rules'
 import { Rule } from '../../utils/validator'
-import { LctCard } from '../lct-card'
+import { LctCard } from '../lct-card/lct-card'
 import { LctInput } from '../lct-input'
 import { LctMenu } from '../lct-menu'
 import { LctTextfield } from '../lct-textfield'
@@ -51,8 +51,8 @@ const LctDateRange = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     required: {

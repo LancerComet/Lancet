@@ -1,5 +1,5 @@
 import { defineComponent, inject, PropType, provide, Ref, ref, toRefs } from 'vue'
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { randomString } from '../../utils/random'
 import { ComponentName as TabComponentName } from './tab'
 
@@ -12,7 +12,7 @@ type TabNameType = string | number | undefined
 
 interface ITab {
   modelValue: Ref<TabNameType>
-  color: Ref<LancetColorScheme>
+  color: Ref<LctColorScheme>
   emitActivateTab: (tabName: TabNameType) => void
 }
 
@@ -21,8 +21,8 @@ const LctTabs = defineComponent({
 
   props: {
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     modelValue: {
@@ -54,7 +54,7 @@ const _useTabs = (): ITab => {
     EmitTabsProvideKey,
     {
       modelValue: ref<TabNameType>(),
-      color: ref<LancetColorScheme>(LancetColorScheme.Primary),
+      color: ref<LctColorScheme>(LctColorScheme.Primary),
       emitActivateTab: () => {
         console.warn(`${TabComponentName} must be located under ${ComponentName}.`)
       }

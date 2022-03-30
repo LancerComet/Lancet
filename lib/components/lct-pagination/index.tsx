@@ -1,5 +1,5 @@
 import { computed, defineComponent } from 'vue'
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 import { isNumber } from '../../utils/type'
 import { LctBtn } from '../lct-btn'
 import { LctTextfield } from '../lct-textfield'
@@ -94,19 +94,19 @@ const LctPagination = defineComponent({
 
     return () => (
       <div class='lct-pagination'>
-        <LctBtn transparent onClick={goPrev} class={['pagination-change', 'pagination-btn']} minWidth={0}>
-          <span>上一页</span>
+        <LctBtn text onClick={goPrev} class={['pagination-change', 'pagination-btn']} minWidth={0}>
+          <LctIcon>keyboard_arrow_left</LctIcon>
         </LctBtn>
         {updateList.value.map((item: string | number) => (
           <LctBtn class='pagination-btn'
-            color={LancetColorScheme.Primary}
-            transparent ={!(item === props.modelValue)}
+            color={LctColorScheme.Primary}
+            outlined ={!(item === props.modelValue)}
             onClick={() => goTargetPage(item)}
             minWidth={0}
           >{item}</LctBtn>
         ))}
-        <LctBtn transparent onClick={goNext} class={['pagination-change', 'pagination-btn']} minWidth={0}>
-          <span>下一页</span>
+        <LctBtn text onClick={goNext} class={['pagination-change', 'pagination-btn']} minWidth={0}>
+          <LctIcon>keyboard_arrow_right</LctIcon>
         </LctBtn>
         <div class='pagination-input'>
           <span>跳转至</span>

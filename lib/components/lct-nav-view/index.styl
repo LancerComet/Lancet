@@ -1,0 +1,111 @@
+$drawerWidth = 300px
+
+.lct-nav-view
+  display: flex
+  flex-direction: column
+  width: 100%
+  height: 100%
+  overflow: hidden
+
+  .lct-nav-view-mica
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    transition: all $easing .4s
+
+    &.hidden
+      opacity: 0
+
+  .lct-nav-view-action-bar
+    position: sticky
+    top: 0
+    left: 0
+    z-index: 2
+
+    .lct-nav-view-action-bar-content
+      display: flex
+      flex-direction: row
+      align-items: center
+      position: relative
+      padding: 10px
+      box-sizing: border-box
+
+    .lct-nav-drawer-button
+      flex-shrink: 0
+      padding: 10px
+      margin: 0 10px 0 0
+
+  .lct-nav-view-content
+    flex-grow: 1
+    position: relative
+    overflow: auto
+
+    .lct-nav-view-drawer-backdrop
+      display: none
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 1
+      background-color: rgba(0, 0, 0, .5)
+
+      @media screen and (max-width: $pcBoundary)
+        display: block
+
+    .lct-nav-view-drawer
+      flex-shrink: 0
+      width: $drawerWidth
+      height: 100%
+      position: absolute
+      left: 0
+      top: 0
+      transition: all $easing .2s
+      z-index: 1
+      box-sizing: border-box
+
+      &.open
+        transform: translate(0, 0)
+
+      &.closed
+        transform: translate(-100%, 0)
+
+      @media screen and (max-width: $pcBoundary)
+        padding: 15px
+
+      .lct-nav-view-drawer-content
+        height: 100%
+        position: relative
+        overflow: hidden
+
+        @media screen and (max-width: $pcBoundary)
+          border-radius: 28px !important
+
+        .drawer-content
+          height: 100%
+          position: relative
+          padding: 20px
+          box-sizing: border-box
+          overflow: auto
+
+        .drawer-mica
+          @media screen and (min-width: $pcBoundary)
+            display: none
+
+    .lct-nav-view-frame
+      height: 100%
+      padding: 20px 40px
+      position: relative
+      overflow: auto
+      box-sizing: border-box
+
+      &.drawer-open
+        width: s("calc(100% - %s)", $drawerWidth)
+        left: $drawerWidth
+
+      @media screen and (max-width: $pcBoundary)
+        width: 100% !important
+        padding: 20px
+        left: 0 !important

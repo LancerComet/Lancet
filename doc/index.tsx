@@ -1,47 +1,32 @@
-import 'reflect-metadata'
-
+import hljs from 'highlight.js'
 import { defineComponent, createApp } from 'vue'
+import 'highlight.js/styles/rainbow.css'
 
 import 'material-icons/iconfont/material-icons.css'
+import './style/index.styl'
 
 import { Lancet, LctApp } from '../lib'
-import { ButtonShowcase } from './components/button-showcase'
-import { DialogShowcase } from './components/dialog-showcase'
-import { FormShowcase } from './components/form-showcase'
-import { ProgressShowcase } from './components/progress-showcase'
-import { SwitcherShowcase } from './components/switcher-showcase'
-import { TableShowcase } from './components/table-showcase'
-import { TabsShowcase } from './components/tabs-showcase'
-import { ToastShowcase } from './components/toast-showcase'
-import { TooltipShowcase } from './components/tooltip-showcase'
-import style from './index.module.styl'
+import { AppLayout } from './layout'
+import { router } from './plugins/router'
 
-const TestPage = defineComponent({
+const Layout = defineComponent({
   name: 'TestPage',
   setup () {
     return () => (
       <LctApp>
-        <div class={style.testPage}>
-          <div>
-            <h1>Lancet</h1>
-            <p>A little tiny Vue 3 UI component library.</p>
-          </div>
-
-          <ButtonShowcase />
-          <SwitcherShowcase />
-          <TabsShowcase />
-          <FormShowcase />
-          <TableShowcase />
-          <DialogShowcase />
-          <ToastShowcase />
-          <ProgressShowcase />
-          <TooltipShowcase />
-        </div>
+        <AppLayout/>
       </LctApp>
     )
   }
 })
 
-const app = createApp(TestPage)
+const app = createApp(Layout)
 app.use(Lancet)
+app.use(router)
+app.mixin({
+  mounted: () => {
+    hljs.highlightAll()
+  }
+})
+
 app.mount('#app')

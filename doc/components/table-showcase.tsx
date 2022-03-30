@@ -30,20 +30,10 @@ const TableShowcase = defineComponent({
       value: 'email',
       align: 'left'
     }, {
-      text: '操作',
-      value: 'email'
+      text: '操作'
     }]
 
     const slots = {
-      header: (headers?: LctHeader<ListItem>[]) => {
-        return (
-          <tr>
-            {headers?.map(value => (
-              <th>{value.text}</th>))
-            }
-          </tr>
-        )
-      },
       items: (items?: ListItem) => {
         return (
           <tr>
@@ -51,18 +41,15 @@ const TableShowcase = defineComponent({
             <td>{items?.firstName}</td>
             <td>{items?.lastName}</td>
             <td>{items?.email}</td>
-            <td><LctBtn>操作</LctBtn></td>
+            <td><LctBtn>Operation</LctBtn></td>
           </tr>
         )
       }
     }
 
     return () => (
-      <LctCard title='表格' elevated withMargin>
-        <label>表格一</label>
-        <LctTable items={items} headers={headers} style={'margin:20px 0'}/>
-        <label>表格二</label>
-        <LctTable items={items} headers={headers} v-slots={slots} style={'margin:20px 0'}/>
+      <LctCard title='表格' withMargin>
+        <LctTable items={items} headers={headers} style={'margin:20px 0'} v-slots={slots} />
       </LctCard>
     )
   }

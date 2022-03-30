@@ -20,7 +20,7 @@ declare module '*.json' {
   export default content
 }
 
-declare module '*.svga' {
+declare module '*.mdx' {
   const content: any
   export default content
 }

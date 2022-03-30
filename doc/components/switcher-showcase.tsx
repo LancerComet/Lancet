@@ -1,5 +1,11 @@
 import { defineComponent, ref } from 'vue'
-import { LctCard, LctSwitcher } from '../../lib'
+import { LctColorScheme, LctCard, LctSwitcher } from '../../lib'
+
+const spanStyle = {
+  display: 'inline-block',
+  width: '120px',
+  'vertical-align': 'middle'
+}
 
 const SwitcherShowcase = defineComponent({
   setup () {
@@ -7,27 +13,36 @@ const SwitcherShowcase = defineComponent({
     const loading = ref(false)
     const disabled = ref(false)
     const name = ref('John Smith')
+    const themes = ref(true)
 
     return () => (
-      <LctCard title='Switcher' elevated withMargin>
+      <LctCard title='Switcher' withMargin>
         <div>
+          <span style={spanStyle}>Selected: {selected.value.toString()}</span>
           <LctSwitcher v-model={selected.value} style='vertical-align: middle'/>
-          <span style='vertical-align: middle'>Selected: {selected.value.toString()}</span>
         </div>
 
         <div>
+          <span style={spanStyle}>Loading</span>
           <LctSwitcher v-model={loading.value} loading={true} style='vertical-align: middle'/>
-          <span style='vertical-align: middle'>Loading</span>
         </div>
 
         <div>
+          <span style={spanStyle}>Disabled</span>
+          <LctSwitcher modelValue={true} disabled={true} style='vertical-align: middle'/>
           <LctSwitcher v-model={disabled.value} disabled={true} style='vertical-align: middle'/>
-          <span style='vertical-align: middle'>Disabled</span>
         </div>
 
         <div>
           <LctSwitcher v-model={name.value} trueValue={'John Smith'} falseValue={'LancerComet'} style='vertical-align: middle'/>
           <span style='vertical-align: middle'>Custom binding: {name.value}</span>
+        </div>
+
+        <div>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Primary}/>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Success}/>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Warning}/>
+          <LctSwitcher v-model={themes.value} style='vertical-align: middle' color={LctColorScheme.Error}/>
         </div>
       </LctCard>
     )

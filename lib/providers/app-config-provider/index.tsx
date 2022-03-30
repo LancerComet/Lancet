@@ -1,35 +1,42 @@
-import { computed, defineComponent, inject, PropType, provide, Ref } from 'vue'
-import { createDefaultConfig, LancetAppConfig } from '../../config/app-config'
-import { createDefaultColorConfig } from '../../config/color'
-import { createDefaultTheme } from '../../config/theme'
+import { computed, defineComponent, inject, PropType, provide, readonly, ref, Ref } from 'vue'
+import { createDefaultAppConfig, LancetAppConfig } from '../../config/app-config'
 import { randomString } from '../../utils/random'
 
+type SetAppConfigFunc = (payload: Partial<LancetAppConfig>) => void
+
 const AppConfigInjectKey = `appConfig_${randomString()}`
+const SetAppConfigInjectKey = `setAppConfig_${randomString()}`
+
+const DEFAULT_APP_CONFIG = createDefaultAppConfig()
+Object.freeze(DEFAULT_APP_CONFIG)
 
 const AppConfigProvider = defineComponent({
   name: 'AppConfigProvider',
 
   props: {
     config: {
-      type: Object as PropType<Partial<LancetAppConfig>>,
-      default: createDefaultConfig()
+      type: Object as PropType<Partial<LancetAppConfig>>
     }
   },
 
   setup (props, { slots }) {
-    const config = computed<LancetAppConfig>(() => {
-      const defaultTheme = createDefaultTheme()
-      const defaultColorConfig = createDefaultColorConfig()
+    const userDefinedAppConfig = ref({
+      ...props.config
+    })
+
+    const appConfig = computed<LancetAppConfig>(() => {
       return {
-        theme: props.config?.theme ?? defaultTheme,
-        colors: {
-          ...defaultColorConfig,
-          ...props.config?.colors
-        }
+        ...DEFAULT_APP_CONFIG,
+        ...userDefinedAppConfig.value
       }
     })
 
-    provide(AppConfigInjectKey, config)
+    const setAppConfig: SetAppConfigFunc = (payload: Partial<LancetAppConfig>) => {
+      userDefinedAppConfig.value = { ...payload }
+    }
+
+    provide(AppConfigInjectKey, appConfig)
+    provide(SetAppConfigInjectKey, setAppConfig)
 
     return () => (
       <>{ slots.default?.() }</>
@@ -38,15 +45,36 @@ const AppConfigProvider = defineComponent({
 })
 
 /**
- * 获取全局 App 配置.
- * 仅在 <LctApp /> 包含的组件内可用.
- *
- * @returns {Ref<LancetAppConfig>} 全局配置响应对象.
+ * Get and set app config.
+ * Only available within the <LctApp />.
  */
-const useAppConfig = (): Ref<LancetAppConfig> => {
-  return inject<Ref<LancetAppConfig>>(
-    AppConfigInjectKey, computed(() => createDefaultConfig())
+const useAppConfig = (): {
+  appConfig: Readonly<Ref<LancetAppConfig>>
+  setAppConfig: SetAppConfigFunc
+  resetAppConfig: () => void
+} => {
+  const warn = () => console.warn('[Lancet] You have to call useAppConfig under <LctApp />.')
+
+  const appConfig = inject<Ref<LancetAppConfig>>(
+    AppConfigInjectKey,
+    computed(() => {
+      warn()
+      return DEFAULT_APP_CONFIG
+    })
   )
+
+  const setAppConfig = inject<SetAppConfigFunc>(
+    SetAppConfigInjectKey,
+    () => warn()
+  )
+
+  const resetAppConfig = () => setAppConfig(DEFAULT_APP_CONFIG)
+
+  return {
+    appConfig: readonly(appConfig),
+    setAppConfig,
+    resetAppConfig
+  }
 }
 
 export {

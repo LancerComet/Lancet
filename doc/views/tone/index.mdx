@@ -1,0 +1,68 @@
+import { LctBtn, LctCard, LctCardContent, LctMica } from '../../../lib'
+import { ThemeList } from './components/theme-list'
+import { SelectImage } from './components/select-image'
+
+<LctCard overHidden radius={28} withMargin>
+  <LctMica>
+    <LctCardContent>
+      # Tone
+    </LctCardContent>
+  </LctMica>
+</LctCard>
+
+<LctCard>
+  <LctCardContent>
+    ### Let's have a different feeling
+    Please select a different color:
+    <ThemeList />
+    In the Material Design 3, the color has become the first class citizen in the visual elements, so it's nice to have theme switching feature in the app.
+    If you have ever used Android 12, you must have found that the tone is based on your wallpaper, as well as Windows 11.
+    So let's try this 👇:
+    <SelectImage />
+    Now the tone is based on your image. Somehow there would be some weird color patterns.
+  </LctCardContent>
+</LctCard>
+
+<LctCard>
+  <LctCardContent>
+    ### Color type
+    There are two kind of colors defined in Lancet:
+
+     - Tonal: Used as the theme color by many components, like the background of a button.
+     - Text: The text color of your app, just what you see right now.
+
+    You can change them at anytime to have a different looking.
+    Each type has four color schemes defined. Check the next section for more.
+  </LctCardContent>
+</LctCard>
+
+<LctCard>
+  <LctCardContent>
+    ### Color Scheme
+    There are four color schemes defined in Lancet:
+
+     - Primary: The main color. This color is used in regular situations.
+     - Warn: Used in the situation which warns the user by some components.
+     - Error: Used in the situation which tells the user an error has come out.
+     - Success: Used in the situation which tells the user something has been done successfully.
+
+    Most of the components use **Primary** as its main color by default. However there are some components use a different one, such as a warning or error toast.
+    The good news is, the color scheme of most components can be changed:
+
+    ```tsx
+    // A primary color button by default:
+    <LctBtn />
+
+    // Now you have an error color button:
+    <LctBtn color={LctColorScheme.Error} />
+    ```
+  </LctCardContent>
+</LctCard>
+
+<LctCard>
+  <LctCardContent>
+    ### Change the color
+    You can change the Primary, Warn, Error, Success Color to have a different looking just like what you have seen in the first section.
+    But for now, you can't define more themes and mix them up.
+  </LctCardContent>
+</LctCard>

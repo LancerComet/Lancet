@@ -3,6 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "allowJs": true,
     "strict": true,
     "jsx": "preserve",
     "useDefineForClassFields": false,
@@ -24,14 +25,7 @@
       "node"
     ]
   },
-  "include": [
-    "lib/**/*.ts",
-    "lib/**/*.tsx",
-    "lib/**/*.d.ts",
-    "lib/**/*.vue",
-    "doc/**/*.ts",
-    "doc/**/*.tsx",
-    "doc/**/*.d.ts",
-    "doc/**/*.vue"
+  "exclude": [
+    "node_modules"
   ]
 }

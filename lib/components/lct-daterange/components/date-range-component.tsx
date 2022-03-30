@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { computed, ComputedRef, defineComponent, PropType, ref, toRef } from 'vue'
 
-import { LancetColorConfig, LancetColorScheme } from '../../../config/color'
+import { LancetColorConfig, LctColorScheme } from '../../../config/color'
 import { useAppConfig } from '../../../providers/app-config-provider'
 import { lighten } from '../../../utils/color'
 import { getWeekLabel, isToday } from '../../../utils/date'
@@ -23,8 +23,8 @@ const LctDateRangeComponent = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     },
 
     format: {

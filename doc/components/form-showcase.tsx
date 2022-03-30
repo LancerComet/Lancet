@@ -2,7 +2,7 @@ import { defineComponent, ref } from 'vue'
 import {
   LctBtn, LctCard, LctCheckbox, LctDatepicker, LctForm,
   LctInput, LctRadio, LctRadioGroup, LctSelect,
-  LctTextfield, LancetColorScheme, useDialog,
+  LctTextfield, LctColorScheme, useDialog,
   useToast
 } from '../../lib'
 import { isString } from '../../lib/utils/type'
@@ -47,7 +47,7 @@ const FormShowcase = defineComponent({
         onConfirm: async dialog => {
           await new Promise(resolve => setTimeout(resolve, 1000))
           dialog.close()
-          createToast('操作成功.', LancetColorScheme.Success)
+          createToast('操作成功.', LctColorScheme.Success)
         }
       })
     }
@@ -62,7 +62,7 @@ const FormShowcase = defineComponent({
     }
 
     return () => (
-      <LctCard title='表单' elevated withMargin>
+      <LctCard title='表单' withMargin>
         <LctForm v-model={isDataValid.value} onSubmit={onSubmit} ref={formRef}>
           <LctTextfield
             v-model={userInput.value.username}
@@ -85,7 +85,7 @@ const FormShowcase = defineComponent({
             rules={validator.gender}
             icon='face' label='性别' required
           >
-            <LctRadio value={UserGender.Male} label={User.getGenderLabel(UserGender.Male)} color={LancetColorScheme.Primary} />
+            <LctRadio value={UserGender.Male} label={User.getGenderLabel(UserGender.Male)} color={LctColorScheme.Primary} />
             <LctRadio value={UserGender.Female} label={User.getGenderLabel(UserGender.Female)} />
             <LctRadio value={UserGender.Unknown} label={User.getGenderLabel(UserGender.Unknown)} />
           </LctRadioGroup>
@@ -116,7 +116,7 @@ const FormShowcase = defineComponent({
           </div>
 
           <div>
-            <LctBtn type='submit' color={LancetColorScheme.Primary}>提交</LctBtn>
+            <LctBtn type='submit' color={LctColorScheme.Primary}>提交</LctBtn>
             <LctBtn outlined onClick={onValidateButtonClick}>验证</LctBtn>
           </div>
         </LctForm>

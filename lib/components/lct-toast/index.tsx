@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from 'vue'
-import { LancetColorScheme } from '../../config/color'
+import { LctColorScheme } from '../../config/color'
 
 import './index.styl'
 import { updateDynamicStyle } from './style'
@@ -23,8 +23,8 @@ const LctToast = defineComponent({
     },
 
     color: {
-      type: String as PropType<LancetColorScheme>,
-      default: LancetColorScheme.Primary
+      type: String as PropType<LctColorScheme>,
+      default: LctColorScheme.Primary
     }
   },
 
