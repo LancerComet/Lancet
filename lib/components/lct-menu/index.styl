@@ -17,11 +17,17 @@
 .lct-menu
   position: relative
 
-  .menu-slot
+  .position-setter
     position: absolute
     top: 100%
     left: 0
     z-index: 1
+
+    &.full-screen
+      position: fixed
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
 
   .lct-menu-entry-animation
     animation: lct-menu-entry-animation $easing .2s

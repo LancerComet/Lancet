@@ -1,6 +1,6 @@
 import { readonly, Ref, ref, watch } from 'vue'
 import { _useLctForm } from '../components/lct-form'
-import { isArray, isEmptyString, isFunction, isString } from '../utils/type'
+import { isArray, isFunction, isString } from '../utils/type'
 import { Rule } from '../utils/validator'
 
 /**
@@ -55,9 +55,8 @@ const useRules = (valueRef: Ref<unknown>, rules: Rule[], onChange?: (isPassed: b
 
   const stopWatch = watch(valueRef, validate, { deep: true })
 
-  // 首次验证时, 如果有预设值就更新错误文案, 如果没有则不更新.
   validate({
-    isUpdateErrorMessage: !isEmptyString(valueRef.value)
+    isUpdateErrorMessage: false
   })
 
   return {

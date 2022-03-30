@@ -24,7 +24,7 @@
     position: relative
     padding: 20px
     background-color: #fff
-    border-radius: 10px
+    border-radius: 4px
     animation: lct-dialog-body-enter $easing .4s
     box-sizing: border-box
 
@@ -33,6 +33,12 @@
       right: 0
       top: 0
       transition: all $easing .4s
+
+      .close-icon
+        background-image: url('./close.svg')
+        background-size: 100% 100%
+        height: 12px
+        width: 12px
 
       &:hover
         transform: rotate(180deg) scale(1.2)
@@ -48,10 +54,12 @@
     .dialog-content
       margin: 10px 0
       overflow: auto
+      font-size: 14px
+      color #212121
 
     .btn-container
       margin-top: 10px
-      text-align: center
+      text-align: right
 
       .confirm-btn
       .cancel-btn

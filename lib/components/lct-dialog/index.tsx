@@ -3,7 +3,6 @@ import { computed, defineComponent, onMounted, PropType, ref } from 'vue'
 import { LancetColorScheme } from '../../config/color'
 import { isFunction, isEmptyString, isString, isNumber } from '../../utils/type'
 import { LctBtn } from '../lct-btn'
-import { LctIcon } from '../lct-icon'
 
 import './index.styl'
 
@@ -178,7 +177,7 @@ const LctDialog = defineComponent({
         props.hideCloseBtn
           ? null
           : <LctBtn minWidth='0' class='close-button' transparent onClick={onCancelButtonClick}>
-              <LctIcon>close</LctIcon>
+              <div class='close-icon'></div>
             </LctBtn>
       )
       return (

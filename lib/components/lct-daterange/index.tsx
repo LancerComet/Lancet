@@ -1,34 +1,45 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { computed, defineComponent, onBeforeUnmount, PropType, ref, toRef, Transition } from 'vue'
-
+import { LancetColorScheme } from '../../config/color'
 import { useRules } from '../../hooks/use-rules'
-import { resetHour } from '../../utils/date'
 import { Rule } from '../../utils/validator'
 import { LctCard } from '../lct-card'
 import { LctInput } from '../lct-input'
 import { LctMenu } from '../lct-menu'
 import { LctTextfield } from '../lct-textfield'
-import { CalendarBody } from './components/calendar-body'
+import { LctDateRangeComponent } from './components/date-range-component'
 
 import './index.styl'
 
 const isoDateFormat = 'YYYY-MM-DDTHH:mm:ssZ'
 
-const LctDatepicker = defineComponent({
+/**
+ * DateRange 是日期范围选择器.
+ *
+ * @example
+ *   const dateRange = ['2020-01-01T00:00:00Z', '2021-01-02T00:00:00Z']
+ *   <LctDateRange v-model={dateRange} />
+ *
+ *   const dateRange = ['2020-01-01', '2021-01-02']
+ *   <LctDateRange v-model={dateRange} format='YYYY-MM-DD' />
+ */
+const LctDateRange = defineComponent({
+  name: 'LctDateRange',
+
   props: {
+    modelValue: {
+      type: Array as PropType<Array<string | undefined>>,
+      default: () => []
+    },
+
     format: {
       type: String as PropType<string>,
       default: isoDateFormat
     },
 
-    modelValue: {
-      type: String as PropType<string>,
-      default: resetHour(dayjs()).format(isoDateFormat)
-    },
-
     displayFormat: {
       type: String as PropType<string>,
-      default: 'YYYY-MM-DD HH:mm:ss'
+      default: 'YYYY-MM-DD'
     },
 
     label: {
@@ -37,6 +48,11 @@ const LctDatepicker = defineComponent({
 
     icon: {
       type: String as PropType<string>
+    },
+
+    color: {
+      type: String as PropType<LancetColorScheme>,
+      default: LancetColorScheme.Primary
     },
 
     required: {
@@ -62,6 +78,15 @@ const LctDatepicker = defineComponent({
     fullScreen: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+
+    allowSameDay: {
+      type: Boolean as PropType<boolean>,
+      default: false
+    },
+
+    textfieldWidth: {
+      type: [Number, String] as PropType<number | string>
     }
   },
 
@@ -75,27 +100,49 @@ const LctDatepicker = defineComponent({
       props.rules
     )
 
-    const userInputDate = computed<Dayjs | null>(() => {
-      const date = dayjs(props.modelValue)
+    const startDate = computed<Dayjs | null>(() => {
+      const rawDate = props.modelValue[0]
+      if (!rawDate) {
+        return null
+      }
+      const date = dayjs(rawDate)
       return date.isValid()
         ? date
         : null
+    })
+
+    const endDate = computed<Dayjs | null>(() => {
+      const rawDate = props.modelValue[1]
+      if (!rawDate) {
+        return null
+      }
+      const date = dayjs(rawDate)
+      return date.isValid()
+        ? date
+        : null
+    })
+
+    const _modelValue = computed<Array<Dayjs | null>>(() => {
+      return [startDate.value, endDate.value]
     })
 
     const setExpansionStatus = (openStatus: boolean) => {
       isOpen.value = openStatus
     }
 
-    const onDateSelected = (newDate: string) => {
-      emit('update:modelValue', newDate)
+    const onDateSelected = (newDate: Dayjs[]) => {
+      const newValue = [
+        newDate[0].format(props.format),
+        newDate[1].format(props.format)
+      ]
+      emit('update:modelValue', newValue)
       validate()
     }
 
-    const displayDate = computed(() => {
-      const date = dayjs(props.modelValue)
-      return date.isValid()
-        ? date.format(props.displayFormat)
-        : '--'
+    const displayDate = computed<string>(() => {
+      const start = startDate.value?.format(props.displayFormat) ?? '--'
+      const end = endDate.value?.format(props.displayFormat) ?? '--'
+      return `${start} 至 ${end}`
     })
 
     const slots = {
@@ -104,17 +151,19 @@ const LctDatepicker = defineComponent({
           class='calendar-textfield'
           modelValue={displayDate.value}
           readonly disabled={props.disabled}
+          width={props.textfieldWidth}
         />
       ),
       default: () => (
         <LctCard class='calendar-card' elevated withMargin>
-          <CalendarBody
+          <LctDateRangeComponent
             format={props.format}
-            modelValue={userInputDate.value}
+            modelValue={_modelValue.value}
             onSelectDate={onDateSelected}
             yearRange={props.yearRange}
             onClose={() => setExpansionStatus(false)}
-            displayFormat={props.displayFormat}
+            allowSameDay={props.allowSameDay}
+            color={props.color}
           />
         </LctCard>
       )
@@ -133,7 +182,7 @@ const LctDatepicker = defineComponent({
         v-slots={{
           default: () => (
             <LctMenu
-              class='lct-datepicker'
+              class='lct-date-range'
               modelValue={isOpen.value}
               onUpdate:modelValue={setExpansionStatus}
               v-slots={slots}
@@ -155,5 +204,5 @@ const LctDatepicker = defineComponent({
 })
 
 export {
-  LctDatepicker
+  LctDateRange
 }

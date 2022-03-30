@@ -4,9 +4,9 @@ import {
 } from 'vue'
 import { useRules } from '../../hooks/use-rules'
 import { randomString } from '../../utils/random'
+import { Rule } from '../../utils/validator'
 import { LctInput } from '../lct-input'
 import './index.styl'
-import { Rule } from '../../utils/validator'
 
 const ComponentName = 'LctRadioGroup'
 const emitSelectionName = randomString(10)

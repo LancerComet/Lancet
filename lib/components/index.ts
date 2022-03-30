@@ -4,6 +4,7 @@ import { LctCard } from './lct-card'
 import { LctCheckbox } from './lct-checkbox'
 import { LctChip } from './lct-chip'
 import { LctDatepicker } from './lct-datepicker'
+import { LctDateRange } from './lct-daterange'
 import { LctDialog } from './lct-dialog'
 import { LctForm } from './lct-form'
 import { LctIcon } from './lct-icon'
@@ -40,6 +41,7 @@ export {
   LctCheckbox,
   LctChip,
   LctDatepicker,
+  LctDateRange,
   LctDialog,
   LctForm,
   LctIcon,
