@@ -1,6 +1,6 @@
 # Lancet
 
-A little tiny Vue 3 UI component library.
+A little tiny Vue 3 UI component library. Still in heavy development.
 
 ## Quick start
 
